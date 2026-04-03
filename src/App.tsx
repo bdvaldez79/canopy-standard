@@ -1,50 +1,69 @@
-const products = [
+import React, { useState, useEffect } from "react";
+
+type Product = {
+  code: string;
+  name: string;
+  category: string;
+  price: number;
+  summary: string;
+};
+
+const products: Product[] = [
   {
     code: "CS-A01",
     name: "Professional Hose-End Sprayer",
     category: "Irrigation Tools",
-    goals: ["feeding", "maintenance"],
-    climates: ["tropical", "warm"],
-    scale: ["small", "medium"],
-    merchant: "Amazon",
-    merchantUrl: "#",
     price: 34.99,
-    commissionRate: 0.04,
-    badge: "Best Value",
-    summary: "Reliable entry-point sprayer for plant-feeding and repeat maintenance.",
-    detail: "A dependable recommendation for collectors who want a simple, repeatable way to apply nutrients.",
-    fit: "Collectors managing feeding and regular maintenance",
+    summary: "Reliable sprayer for feeding and maintenance.",
   },
   {
     code: "CS-A02",
     name: "Digital Soil Moisture Meter",
     category: "Monitoring",
-    goals: ["monitoring", "watering"],
-    climates: ["tropical", "warm", "temperate"],
-    scale: ["small", "medium", "large"],
-    merchant: "Amazon",
-    merchantUrl: "#",
     price: 49.99,
-    commissionRate: 0.04,
-    badge: "Top Pick",
-    summary: "Fast moisture insight for growers who want fewer guesses and fewer mistakes.",
-    detail: "One of the most useful tools for tropical plant people because it helps turn watering into a signal-driven habit instead of guesswork.",
-    fit: "Plant parents who overwater, underwater, or want better signals",
+    summary: "Helps avoid overwatering and underwatering.",
   },
   {
     code: "CS-A03",
     name: "Heavy-Duty Nursery Cart",
     category: "Workflow Gear",
-    goals: ["workflow", "scaling"],
-    climates: ["tropical", "warm", "temperate"],
-    scale: ["medium", "large"],
-    merchant: "Tractor Supply",
-    merchantUrl: "#",
     price: 129.99,
-    commissionRate: 0.05,
-    badge: "Workhorse Pick",
-    summary: "Moves plants, trays, and gear with less labor friction.",
-    detail: "A simple upgrade that drastically improves how you move plants, tools, and materials around your setup.",
-    fit: "Growers scaling up or tired of inefficient workflows",
+    summary: "Move plants and tools efficiently.",
   },
 ];
+
+export default function App() {
+  const [selected, setSelected] = useState<Product | null>(null);
+
+  useEffect(() => {
+    setSelected(products[0]);
+  }, []);
+
+  return (
+    <div style={{ padding: 20, fontFamily: "Arial" }}>
+      <h1>Canopy Standard</h1>
+
+      <h2>Products</h2>
+      <ul>
+        {products.map((p) => (
+          <li
+            key={p.code}
+            onClick={() => setSelected(p)}
+            style={{ cursor: "pointer", marginBottom: 10 }}
+          >
+            {p.name} - ${p.price}
+          </li>
+        ))}
+      </ul>
+
+      {selected && (
+        <div style={{ marginTop: 20 }}>
+          <h2>{selected.name}</h2>
+          <p><strong>Category:</strong> {selected.category}</p>
+          <p><strong>Price:</strong> ${selected.price}</p>
+          <p>{selected.summary}</p>
+        </div>
+      )}
+    </div>
+  );
+}
