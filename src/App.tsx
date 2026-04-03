@@ -1,45 +1,3 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
-import {
-  ArrowRight,
-  Sparkles,
-  Search,
-  Orbit,
-  Menu,
-  X,
-  Home,
-  LayoutGrid,
-  BookOpen,
-  Info,
-  ShoppingBag,
-  CheckCircle2,
-  Award,
-  Layers3,
-  Briefcase,
-  ShieldCheck,
-  Leaf,
-  Droplets,
-  Sun,
-  ChevronRight,
-  ExternalLink,
-  Mail,
-  Microscope,
-  BadgeDollarSign,
-  Clock3,
-  Filter,
-  Wand2,
-  SlidersHorizontal,
-  Thermometer,
-  MapPin,
-  Package,
-  Target,
-  Settings2,
-  Route,
-  LineChart,
-  Download,
-} from "lucide-react";
-import { Button, Card, CardContent } from "./ui";
-
 const products = [
   {
     code: "CS-A01",
@@ -54,8 +12,7 @@ const products = [
     commissionRate: 0.04,
     badge: "Best Value",
     summary: "Reliable entry-point sprayer for plant-feeding and repeat maintenance.",
-    detail:
-      "A dependable recommendation for collectors who want a simple, repeatable way to apply nutrients or plant-care solutions without overcomplicating the routine.",
+    detail: "A dependable recommendation for collectors who want a simple, repeatable way to apply nutrients.",
     fit: "Collectors managing feeding and regular maintenance",
   },
   {
@@ -71,11 +28,23 @@ const products = [
     commissionRate: 0.04,
     badge: "Top Pick",
     summary: "Fast moisture insight for growers who want fewer guesses and fewer mistakes.",
-    detail:
-      "One of the most useful tools for tropical plant people because it helps turn watering from a nervous habit into a measurable decision.",
-    fit: "Plant parents who overwater, underwater, or just want better signals",
+    detail: "One of the most useful tools for tropical plant people because it helps turn watering into a signal-driven habit instead of guesswork.",
+    fit: "Plant parents who overwater, underwater, or want better signals",
   },
   {
     code: "CS-A03",
     name: "Heavy-Duty Nursery Cart",
     category: "Workflow Gear",
+    goals: ["workflow", "scaling"],
+    climates: ["tropical", "warm", "temperate"],
+    scale: ["medium", "large"],
+    merchant: "Tractor Supply",
+    merchantUrl: "#",
+    price: 129.99,
+    commissionRate: 0.05,
+    badge: "Workhorse Pick",
+    summary: "Moves plants, trays, and gear with less labor friction.",
+    detail: "A simple upgrade that drastically improves how you move plants, tools, and materials around your setup.",
+    fit: "Growers scaling up or tired of inefficient workflows",
+  },
+];
