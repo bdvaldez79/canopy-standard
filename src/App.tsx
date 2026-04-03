@@ -39,3 +39,43 @@ import {
   Download,
 } from "lucide-react";
 import { Button, Card, CardContent } from "./ui";
+
+const products = [
+  {
+    code: "CS-A01",
+    name: "Professional Hose-End Sprayer",
+    category: "Irrigation Tools",
+    goals: ["feeding", "maintenance"],
+    climates: ["tropical", "warm"],
+    scale: ["small", "medium"],
+    merchant: "Amazon",
+    merchantUrl: "#",
+    price: 34.99,
+    commissionRate: 0.04,
+    badge: "Best Value",
+    summary: "Reliable entry-point sprayer for plant-feeding and repeat maintenance.",
+    detail:
+      "A dependable recommendation for collectors who want a simple, repeatable way to apply nutrients or plant-care solutions without overcomplicating the routine.",
+    fit: "Collectors managing feeding and regular maintenance",
+  },
+  {
+    code: "CS-A02",
+    name: "Digital Soil Moisture Meter",
+    category: "Monitoring",
+    goals: ["monitoring", "watering"],
+    climates: ["tropical", "warm", "temperate"],
+    scale: ["small", "medium", "large"],
+    merchant: "Amazon",
+    merchantUrl: "#",
+    price: 49.99,
+    commissionRate: 0.04,
+    badge: "Top Pick",
+    summary: "Fast moisture insight for growers who want fewer guesses and fewer mistakes.",
+    detail:
+      "One of the most useful tools for tropical plant people because it helps turn watering from a nervous habit into a measurable decision.",
+    fit: "Plant parents who overwater, underwater, or just want better signals",
+  },
+  {
+    code: "CS-A03",
+    name: "Heavy-Duty Nursery Cart",
+    category: "Workflow
