@@ -78,4 +78,4 @@ const products = [
   {
     code: "CS-A03",
     name: "Heavy-Duty Nursery Cart",
-    category: "Workflow",
+    category: "Workflow Gear",
