@@ -2,24 +2,18 @@ import React from "react";
 
 export function Button({
   className = "",
-  variant,
   children,
   ...props
 }: {
   className?: string;
-  variant?: string;
   children: React.ReactNode;
   [key: string]: any;
 }) {
-  const base =
-    "inline-flex items-center justify-center text-sm font-medium transition focus:outline-none";
-  const variantClass =
-    variant === "outline"
-      ? "border bg-transparent"
-      : "border border-transparent";
-
   return (
-    <button className={`${base} ${variantClass} ${className}`} {...props}>
+    <button
+      className={`px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 ${className}`}
+      {...props}
+    >
       {children}
     </button>
   );
@@ -35,7 +29,10 @@ export function Card({
   [key: string]: any;
 }) {
   return (
-    <div className={className} {...props}>
+    <div
+      className={`bg-white rounded-2xl shadow-md border ${className}`}
+      {...props}
+    >
       {children}
     </div>
   );
