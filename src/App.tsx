@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 
-// Unsplash images
 const UNSPLASH_IMAGES = {
   "Professional Hose-End Sprayer":
-    "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1598514983318-2f64f8f4796c?w=600&q=80&auto=format&fit=crop",
+
   "Digital Soil Moisture Meter":
-    "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80&auto=format&fit=crop",
+    "https://plus.unsplash.com/premium_photo-1661902899911-d7b89906e638?w=600&q=80&auto=format&fit=crop",
+
   "Heavy-Duty Nursery Cart":
-    "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80&auto=format&fit=crop",
+    "https://plus.unsplash.com/premium_photo-1663012834491-6ba79afac048?w=600&q=80&auto=format&fit=crop",
 } as const;
 
 const products = [
@@ -64,14 +65,20 @@ function ProductCard({ product }: { product: (typeof products)[number] }) {
       </div>
 
       <div className="p-4 flex flex-col flex-1">
-        <h2 className="text-lg font-semibold text-green-900">{product.name}</h2>
+        <h2 className="text-lg font-semibold text-green-900">
+          {product.name}
+        </h2>
+
         <p className="text-xs text-gray-400 mt-1 uppercase tracking-widest">
           {product.category}
         </p>
+
         <p className="text-sm text-gray-600 mt-2 flex-1">
           {product.description}
         </p>
+
         <p className="text-lg font-bold mt-3">{product.price}</p>
+
         <button className="mt-4 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition font-medium">
           View Product
         </button>
