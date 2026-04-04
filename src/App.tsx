@@ -8,7 +8,7 @@ const products = [
     category: "IRRIGATION",
     description: "Reliable sprayer for plant feeding and maintenance.",
     price: 34.99,
-    image: "https://images.unsplash.com/photo-1598514983318-2f64f8f4796c",
+    image: "https://source.unsplash.com/600x400/?garden,sprayer",
   },
   {
     code: "CS-A02",
@@ -16,7 +16,7 @@ const products = [
     category: "MONITORING",
     description: "Helps prevent overwatering and underwatering.",
     price: 49.99,
-    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952",
+    image: "https://source.unsplash.com/600x400/?soil,plant",
   },
   {
     code: "CS-A03",
@@ -24,7 +24,7 @@ const products = [
     category: "WORKFLOW GEAR",
     description: "Move plants and tools easily.",
     price: 89.99,
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+    image: "https://source.unsplash.com/600x400/?garden,cart",
   },
 ];
 
@@ -34,6 +34,7 @@ export default function App() {
       <h1 className="text-3xl font-bold text-green-800 mb-1">
         Canopy Standard 🌿
       </h1>
+
       <p className="text-gray-600 mb-6">
         Smart tools for plant care & growing systems
       </p>
