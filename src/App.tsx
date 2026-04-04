@@ -1,69 +1,49 @@
-import React, { useState, useEffect } from "react";
+import { Card, CardContent } from "./ui";
 
-type Product = {
-  code: string;
-  name: string;
-  category: string;
-  price: number;
-  summary: string;
-};
-
-const products: Product[] = [
+const products = [
   {
-    code: "CS-A01",
     name: "Professional Hose-End Sprayer",
-    category: "Irrigation Tools",
+    category: "Irrigation",
     price: 34.99,
-    summary: "Reliable sprayer for feeding and maintenance.",
+    description: "Reliable sprayer for plant feeding and maintenance.",
   },
   {
-    code: "CS-A02",
     name: "Digital Soil Moisture Meter",
     category: "Monitoring",
     price: 49.99,
-    summary: "Helps avoid overwatering and underwatering.",
+    description: "Helps prevent overwatering and underwatering.",
   },
   {
-    code: "CS-A03",
     name: "Heavy-Duty Nursery Cart",
     category: "Workflow Gear",
-    price: 129.99,
-    summary: "Move plants and tools efficiently.",
+    price: 89.99,
+    description: "Move plants and tools easily.",
   },
 ];
 
 export default function App() {
-  const [selected, setSelected] = useState<Product | null>(null);
-
-  useEffect(() => {
-    setSelected(products[0]);
-  }, []);
-
   return (
-    <div style={{ padding: 20, fontFamily: "Arial" }}>
-      <h1>Canopy Standard</h1>
+    <div className="min-h-screen bg-green-50 p-6">
+      <h1 className="text-3xl font-bold text-green-800 mb-6">
+        Canopy Standard 🌿
+      </h1>
 
-      <h2>Products</h2>
-      <ul>
-        {products.map((p) => (
-          <li
-            key={p.code}
-            onClick={() => setSelected(p)}
-            style={{ cursor: "pointer", marginBottom: 10 }}
-          >
-            {p.name} - ${p.price}
-          </li>
+      <div className="grid gap-6 md:grid-cols-3">
+        {products.map((product, index) => (
+          <Card key={index}>
+            <CardContent className="p-4">
+              <h2 className="text-xl font-semibold text-green-700">
+                {product.name}
+              </h2>
+              <p className="text-sm text-gray-600">{product.category}</p>
+              <p className="mt-2 text-gray-800">{product.description}</p>
+              <p className="mt-3 font-bold text-green-900">
+                ${product.price}
+              </p>
+            </CardContent>
+          </Card>
         ))}
-      </ul>
-
-      {selected && (
-        <div style={{ marginTop: 20 }}>
-          <h2>{selected.name}</h2>
-          <p><strong>Category:</strong> {selected.category}</p>
-          <p><strong>Price:</strong> ${selected.price}</p>
-          <p>{selected.summary}</p>
-        </div>
-      )}
+      </div>
     </div>
   );
 }
