@@ -8,7 +8,7 @@ const products = [
     description: "Reliable sprayer for plant feeding and pest control.",
     price: "$34.99",
     image:
-      "https://i.imgur.com/7yUvePI.jpg", // hose sprayer (matches your pic)
+      "https://cdn.shopify.com/s/files/1/0310/3902/9386/files/220-10_foVD.jpg?v=1726194745897",
   },
   {
     name: "Digital Soil Moisture Meter",
@@ -16,7 +16,7 @@ const products = [
     description: "Helps prevent overwatering and underwatering.",
     price: "$49.99",
     image:
-      "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=800&q=80",
+      "/soil-moisture-meter.jpg",
   },
   {
     name: "Heavy-Duty Nursery Cart",
@@ -24,7 +24,7 @@ const products = [
     description: "Move plants and tools easily.",
     price: "$89.99",
     image:
-      "https://i.imgur.com/0hXw6dS.jpg", // real cart like your first pic
+      "/nursery-cart.jpg",
   },
 ];
 
@@ -32,7 +32,6 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#f3fbf4] p-8">
       <div className="max-w-6xl mx-auto">
-        
         <h1 className="text-4xl font-bold text-green-900 mb-2">
           Canopy Standard 🌿
         </h1>
@@ -44,8 +43,6 @@ export default function App() {
         <div className="grid md:grid-cols-3 gap-6">
           {products.map((p) => (
             <Card key={p.name} className="overflow-hidden">
-
-              {/* IMAGE */}
               <img
                 src={p.image}
                 alt={p.name}
@@ -73,7 +70,6 @@ export default function App() {
                   View Product
                 </Button>
               </CardContent>
-
             </Card>
           ))}
         </div>
