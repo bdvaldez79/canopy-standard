@@ -23,40 +23,52 @@ const products = [
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white p-6 flex justify-center">
-      <div className="w-full max-w-6xl">
-        <h1 className="text-3xl font-bold text-green-800 mb-8">
+    <div className="min-h-screen bg-gradient-to-b from-green-100 via-white to-green-50 p-10">
+      
+      {/* HEADER */}
+      <div className="mb-10">
+        <h1 className="text-4xl font-bold text-green-800 flex items-center gap-2">
           Canopy Standard 🌿
         </h1>
-
-        <div className="grid gap-6 md:grid-cols-3">
-          {products.map((product, index) => (
-            <Card key={index}>
-              <CardContent className="p-4 flex flex-col gap-2">
-                <h2 className="text-xl font-semibold text-green-700">
-                  {product.name}
-                </h2>
-
-                <p className="text-sm text-gray-500">
-                  {product.category}
-                </p>
-
-                <p className="text-gray-700">
-                  {product.description}
-                </p>
-
-                <p className="font-bold text-green-900 mt-2">
-                  ${product.price}
-                </p>
-
-                <Button className="mt-3">
-                  View Product
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        <p className="text-gray-500 mt-2">
+          Smart tools for plant care & growing systems
+        </p>
       </div>
+
+      {/* GRID */}
+      <div className="grid gap-8 md:grid-cols-3">
+        {products.map((product, index) => (
+          <Card
+            key={index}
+            className="p-5 hover:scale-105 transition-transform duration-300"
+          >
+            <CardContent className="flex flex-col gap-3">
+              
+              <h2 className="text-xl font-semibold text-green-700">
+                {product.name}
+              </h2>
+
+              <p className="text-xs uppercase text-gray-400 tracking-wide">
+                {product.category}
+              </p>
+
+              <p className="text-gray-600">
+                {product.description}
+              </p>
+
+              <p className="font-bold text-lg text-green-900 mt-2">
+                ${product.price}
+              </p>
+
+              <Button className="mt-4 w-full">
+                View Product
+              </Button>
+
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
     </div>
   );
 }
