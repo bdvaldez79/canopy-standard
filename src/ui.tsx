@@ -1,4 +1,4 @@
- import React from "react";
+import React from "react";
 
 export function Button({
   className = "",
@@ -11,7 +11,7 @@ export function Button({
 }) {
   return (
     <button
-      className={`bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition ${className}`}
+      className={`w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg ${className}`}
       {...props}
     >
       {children}
@@ -30,7 +30,7 @@ export function Card({
 }) {
   return (
     <div
-      className={`bg-white rounded-xl shadow-md ${className}`}
+      className={`bg-white rounded-xl shadow-md overflow-hidden ${className}`}
       {...props}
     >
       {children}
@@ -48,7 +48,7 @@ export function CardContent({
   [key: string]: any;
 }) {
   return (
-    <div className={className} {...props}>
+    <div className={`p-4 ${className}`} {...props}>
       {children}
     </div>
   );
