@@ -24,22 +24,33 @@ const products = [
 export default function App() {
   return (
     <div className="min-h-screen bg-green-50 p-6">
-      <h1 className="text-3xl font-bold text-green-800 mb-6">
+      <h1 className="text-3xl font-bold text-green-800 mb-8">
         Canopy Standard 🌿
       </h1>
 
       <div className="grid gap-6 md:grid-cols-3">
         {products.map((product, index) => (
-          <Card key={index}>
-            <CardContent className="p-4">
+          <Card key={index} className="hover:shadow-lg transition">
+            <CardContent className="p-4 flex flex-col gap-2">
               <h2 className="text-xl font-semibold text-green-700">
                 {product.name}
               </h2>
-              <p className="text-sm text-gray-600">{product.category}</p>
-              <p className="mt-2 text-gray-800">{product.description}</p>
-              <p className="mt-3 font-bold text-green-900">
+
+              <p className="text-sm text-gray-500">
+                {product.category}
+              </p>
+
+              <p className="text-gray-700">
+                {product.description}
+              </p>
+
+              <p className="font-bold text-green-900 mt-2">
                 ${product.price}
               </p>
+
+              <button className="mt-3 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition">
+                View Product
+              </button>
             </CardContent>
           </Card>
         ))}
