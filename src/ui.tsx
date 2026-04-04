@@ -11,7 +11,7 @@ export function Button({
 }) {
   return (
     <button
-      className={`px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 transition ${className}`}
+      className={`bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition ${className}`}
       {...props}
     >
       {children}
@@ -30,7 +30,7 @@ export function Card({
 }) {
   return (
     <div
-      className={`bg-white rounded-2xl shadow-md border hover:shadow-xl transition duration-300 ${className}`}
+      className={`bg-white rounded-xl shadow-md ${className}`}
       {...props}
     >
       {children}
