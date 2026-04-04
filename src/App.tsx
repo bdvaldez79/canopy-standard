@@ -28,7 +28,8 @@ const plants = [
       "Best when allowed to dry slightly between waterings",
       "Strong fit for interiors with vertical room to grow",
     ],
-    careNote: "Best for bright rooms and collectors who want a dramatic foliage focal point.",
+    careNote:
+      "Best for bright rooms and collectors who want a dramatic foliage focal point.",
     buyUrl: "https://www.amazon.com/",
   },
   {
@@ -43,7 +44,8 @@ const plants = [
       "Works well in decorative gift-oriented spaces",
       "Likes warmth, airflow, and consistent but careful watering",
     ],
-    careNote: "Best for gifting, dining tables, and calm, elegant interiors.",
+    careNote:
+      "Best for gifting, dining tables, and calm, elegant interiors.",
     buyUrl: "https://www.amazon.com/",
   },
   {
@@ -58,7 +60,8 @@ const plants = [
       "Excellent for open corners and large rooms",
       "Creates a clean, premium tropical silhouette",
     ],
-    careNote: "Best for sunny interiors and buyers who want a bold, resort-like plant.",
+    careNote:
+      "Best for sunny interiors and buyers who want a bold, resort-like plant.",
     buyUrl: "https://www.amazon.com/",
   },
   {
@@ -73,7 +76,8 @@ const plants = [
       "Good choice for warm interiors and collectors",
       "Pairs well with refined decorative pots and plant styling",
     ],
-    careNote: "Best for tropical-leaning plant lovers who want color and shine.",
+    careNote:
+      "Best for tropical-leaning plant lovers who want color and shine.",
     buyUrl: "https://www.amazon.com/",
   },
   {
@@ -88,7 +92,8 @@ const plants = [
       "Low-maintenance feel for busy buyers",
       "Strong fit for offices, shelves, and entry points",
     ],
-    careNote: "Best for beginners, darker rooms, and low-effort plant ownership.",
+    careNote:
+      "Best for beginners, darker rooms, and low-effort plant ownership.",
     buyUrl: "https://www.amazon.com/",
   },
   {
@@ -103,30 +108,101 @@ const plants = [
       "Collector-friendly without feeling too difficult",
       "Adds texture and softer movement to a plant arrangement",
     ],
-    careNote: "Best for shelves, hanging displays, and smaller-space plant styling.",
+    careNote:
+      "Best for shelves, hanging displays, and smaller-space plant styling.",
     buyUrl: "https://www.amazon.com/",
   },
 ] as const;
 
-const weeklyNotes = [
+const articles = [
   {
+    slug: "this-week-in-plants",
     title: "This Week in Plants",
+    kicker: "Weekly Plant World",
     summary:
-      "A recurring editorial post that translates plant-world developments, care ideas, and seasonal shifts into buyer-friendly recommendations.",
+      "A recurring editorial post translating current plant-world movement into buyer-friendly recommendations and stronger home-growing decisions.",
+    intro:
+      "This week in plants, the through-line is clarity: which plants perform well in real interiors, which categories continue to attract buyers, and where styling, care logic, and collector interest overlap.",
+    sections: [
+      {
+        heading: "What is rising right now",
+        body:
+          "Statement tropicals still lead visual interest, but easy-care plants remain the strongest entry point for new buyers. That means a smart storefront should balance aspiration with approachability: a Bird of Paradise for drama, a ZZ Plant for trust, and a flowering plant like a Phalaenopsis Orchid for polish.",
+      },
+      {
+        heading: "How to interpret plant trends better",
+        body:
+          "A lot of plant content online is trend-first and care-second. A better curation method is to group plants by function: statement plants, low-light plants, flowering plants, and trailing plants. That gives buyers an easier path to choosing something that fits their actual room and routine.",
+      },
+      {
+        heading: "What this means for your shop",
+        body:
+          "Lead with a small, refined collection. Keep the assortment intentional. Explain why each plant belongs in the collection. That creates trust faster than a giant grid of random options.",
+      },
+    ],
   },
   {
+    slug: "collector-notes",
     title: "Collector Notes",
+    kicker: "Weekly Plant World",
     summary:
-      "Short observations on tropical trends, flowering favorites, and what is looking especially strong right now.",
+      "A short editorial on what collectors are paying attention to, from tropical foliage appeal to the quiet return of elegant flowering plants.",
+    intro:
+      "Collectors do not only buy rarity — they buy shape, mood, texture, and identity. The strongest collections right now mix sculptural foliage with plants that soften and personalize a space.",
+    sections: [
+      {
+        heading: "The foliage story",
+        body:
+          "Plants like Monstera Deliciosa and Bird of Paradise continue to perform because they create immediate visual structure. Their value is not just botanical; it is architectural. They change the way a room feels.",
+      },
+      {
+        heading: "The softer counterbalance",
+        body:
+          "Hoya and orchid categories bring a quieter intimacy. They are less about scale and more about repetition, detail, bloom, and proximity. That balance is what makes a plant assortment feel curated instead of one-note.",
+      },
+      {
+        heading: "What to watch",
+        body:
+          "As more buyers become plant-literate, descriptions matter more. The stores that win will be the ones that explain placement, care rhythm, and design fit — not just plant names.",
+      },
+    ],
   },
   {
+    slug: "care-briefing",
     title: "Care Briefing",
+    kicker: "Weekly Plant World",
     summary:
-      "A simple weekly note linking science-informed care logic to the plants featured on the shop floor.",
+      "A practical weekly note connecting evidence-based care ideas with the actual plants featured on your shop floor.",
+    intro:
+      "Good plant care advice should reduce uncertainty, not increase it. The fastest way to help buyers is to connect care principles to plant categories they understand.",
+    sections: [
+      {
+        heading: "Watering is a category problem",
+        body:
+          "Not every plant wants the same rhythm. Orchids, tropical foliage plants, and low-light plants all handle moisture differently. Grouping care advice by plant type gives buyers a cleaner mental model than one-size-fits-all instructions.",
+      },
+      {
+        heading: "Light is usually the hidden variable",
+        body:
+          "Many plant disappointments are really placement issues. A Bird of Paradise can underperform in a dim room, while a ZZ Plant can remain beautiful where other plants struggle. Curation should help buyers self-select into the right light zone.",
+      },
+      {
+        heading: "What to communicate clearly",
+        body:
+          "For every featured plant, tell buyers three things: where it wants to live, how often to think about watering, and what aesthetic role it plays in a room. That alone makes your site more useful than most plant catalogs.",
+      },
+    ],
   },
-];
+] as const;
 
-const collections = ["All", "Statement Plants", "Elegant Bloomers", "Collector Tropicals", "Easy Care", "Trailing Plants"] as const;
+const collections = [
+  "All",
+  "Statement Plants",
+  "Elegant Bloomers",
+  "Collector Tropicals",
+  "Easy Care",
+  "Trailing Plants",
+] as const;
 
 function CanopyLogo() {
   return (
@@ -359,9 +435,7 @@ function ProductCard({
 
         <p
           className="mb-3 text-xs uppercase tracking-[0.16em] text-stone-400"
-          style={{
-            fontFamily: "'Josefin Sans', sans-serif",
-          }}
+          style={{ fontFamily: "'Josefin Sans', sans-serif" }}
         >
           {plant.collection}
         </p>
@@ -671,16 +745,17 @@ function ProductDetail({
   );
 }
 
-function WeeklyNoteCard({
-  title,
-  summary,
+function ArticleCard({
+  article,
+  onOpen,
 }: {
-  title: string;
-  summary: string;
+  article: (typeof articles)[number];
+  onOpen: () => void;
 }) {
   return (
-    <div
-      className="border border-stone-100 bg-white p-6 shadow-sm"
+    <button
+      onClick={onOpen}
+      className="w-full border border-stone-100 bg-white p-6 text-left shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
       style={{ borderRadius: "2px" }}
     >
       <p
@@ -694,7 +769,7 @@ function WeeklyNoteCard({
           marginBottom: "10px",
         }}
       >
-        Weekly Plant World
+        {article.kicker}
       </p>
 
       <h3
@@ -707,7 +782,7 @@ function WeeklyNoteCard({
           marginBottom: "12px",
         }}
       >
-        {title}
+        {article.title}
       </h3>
 
       <p
@@ -717,8 +792,169 @@ function WeeklyNoteCard({
           fontWeight: 300,
         }}
       >
-        {summary}
+        {article.summary}
       </p>
+
+      <div className="mt-5">
+        <span
+          style={{
+            fontFamily: "'Josefin Sans', sans-serif",
+            fontSize: "10px",
+            fontWeight: 600,
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
+            color: "#3d5c30",
+          }}
+        >
+          Read article
+        </span>
+      </div>
+    </button>
+  );
+}
+
+function ArticleDetail({
+  article,
+  onBack,
+}: {
+  article: (typeof articles)[number];
+  onBack: () => void;
+}) {
+  return (
+    <div
+      className="border border-stone-100 bg-white p-8 shadow-sm md:p-12"
+      style={{ borderRadius: "2px" }}
+    >
+      <button
+        onClick={onBack}
+        className="mb-10 flex items-center gap-2 transition-colors"
+        style={{
+          fontFamily: "'Josefin Sans', sans-serif",
+          fontSize: "10px",
+          fontWeight: 600,
+          letterSpacing: "0.2em",
+          textTransform: "uppercase",
+          color: "#5a7a4a",
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+        }}
+      >
+        ← Back to articles
+      </button>
+
+      <p
+        style={{
+          fontFamily: "'Josefin Sans', sans-serif",
+          fontSize: "9px",
+          fontWeight: 600,
+          letterSpacing: "0.25em",
+          textTransform: "uppercase",
+          color: "#8a9e7a",
+          marginBottom: "12px",
+        }}
+      >
+        {article.kicker}
+      </p>
+
+      <h1
+        style={{
+          fontFamily: "'Cormorant Garamond', serif",
+          fontSize: "42px",
+          fontWeight: 400,
+          color: "#2a231c",
+          lineHeight: 1.1,
+          marginBottom: "16px",
+        }}
+      >
+        {article.title}
+      </h1>
+
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 0,
+          marginBottom: "24px",
+        }}
+      >
+        <div style={{ width: "40px", height: "1px", background: "#c8b89a" }} />
+        <div
+          style={{
+            width: "4px",
+            height: "4px",
+            background: "#c8b89a",
+            transform: "rotate(45deg)",
+            margin: "0 6px",
+          }}
+        />
+        <div style={{ flex: 1, height: "1px", background: "#e8e0d4" }} />
+      </div>
+
+      <p
+        className="mb-10 text-base leading-8 text-stone-600"
+        style={{
+          fontFamily: "'Josefin Sans', sans-serif",
+          fontWeight: 300,
+        }}
+      >
+        {article.intro}
+      </p>
+
+      <div className="space-y-10">
+        {article.sections.map((section) => (
+          <section key={section.heading}>
+            <h2
+              style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: "30px",
+                fontWeight: 400,
+                color: "#2a231c",
+                marginBottom: "12px",
+              }}
+            >
+              {section.heading}
+            </h2>
+
+            <p
+              className="text-sm leading-8 text-stone-600"
+              style={{
+                fontFamily: "'Josefin Sans', sans-serif",
+                fontWeight: 300,
+              }}
+            >
+              {section.body}
+            </p>
+          </section>
+        ))}
+      </div>
+
+      <div className="mt-12 flex gap-4">
+        <button
+          onClick={onBack}
+          style={{
+            fontFamily: "'Josefin Sans', sans-serif",
+            fontSize: "10px",
+            fontWeight: 600,
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+            color: "#3d5c30",
+            background: "none",
+            border: "1px solid #c8d8b8",
+            padding: "14px 28px",
+            cursor: "pointer",
+            transition: "background 0.2s",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "#f4f8f0";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "none";
+          }}
+        >
+          Back
+        </button>
+      </div>
     </div>
   );
 }
@@ -726,6 +962,8 @@ function WeeklyNoteCard({
 export default function App() {
   const [selectedPlant, setSelectedPlant] =
     useState<(typeof plants)[number] | null>(null);
+  const [selectedArticle, setSelectedArticle] =
+    useState<(typeof articles)[number] | null>(null);
   const [activeCollection, setActiveCollection] =
     useState<(typeof collections)[number]>("All");
 
@@ -738,7 +976,6 @@ export default function App() {
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;600&display=swap');
-
         * { box-sizing: border-box; }
         body { margin: 0; background: #f7f4ef; }
       `}</style>
@@ -793,7 +1030,7 @@ export default function App() {
             </nav>
           </header>
 
-          {!selectedPlant && (
+          {!selectedPlant && !selectedArticle && (
             <>
               <div className="mb-10">
                 <p
@@ -880,7 +1117,9 @@ export default function App() {
                         textTransform: "uppercase",
                         color: active ? "#fff" : "#4a3d30",
                         background: active ? "#3d5c30" : "rgba(255,255,255,0.7)",
-                        border: active ? "1px solid #3d5c30" : "1px solid #ddd4c7",
+                        border: active
+                          ? "1px solid #3d5c30"
+                          : "1px solid #ddd4c7",
                         padding: "10px 16px",
                         cursor: "pointer",
                         transition: "all 0.2s",
@@ -931,11 +1170,11 @@ export default function App() {
                 </div>
 
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-                  {weeklyNotes.map((note) => (
-                    <WeeklyNoteCard
-                      key={note.title}
-                      title={note.title}
-                      summary={note.summary}
+                  {articles.map((article) => (
+                    <ArticleCard
+                      key={article.slug}
+                      article={article}
+                      onOpen={() => setSelectedArticle(article)}
                     />
                   ))}
                 </div>
@@ -947,6 +1186,13 @@ export default function App() {
             <ProductDetail
               plant={selectedPlant}
               onBack={() => setSelectedPlant(null)}
+            />
+          )}
+
+          {selectedArticle && (
+            <ArticleDetail
+              article={selectedArticle}
+              onBack={() => setSelectedArticle(null)}
             />
           )}
 
