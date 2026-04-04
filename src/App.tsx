@@ -6,18 +6,21 @@ const products = [
     category: "Irrigation",
     price: 34.99,
     description: "Reliable sprayer for plant feeding and maintenance.",
+    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952",
   },
   {
     name: "Digital Soil Moisture Meter",
     category: "Monitoring",
     price: 49.99,
     description: "Helps prevent overwatering and underwatering.",
+    image: "https://images.unsplash.com/photo-1598514982846-1cf5a6e6c0d3",
   },
   {
     name: "Heavy-Duty Nursery Cart",
     category: "Workflow Gear",
     price: 89.99,
     description: "Move plants and tools easily.",
+    image: "https://images.unsplash.com/photo-1616627981565-7c0b2c5f8d9f",
   },
 ];
 
@@ -40,19 +43,27 @@ export default function App() {
         {products.map((product, index) => (
           <Card
             key={index}
-            className="p-5 hover:scale-105 transition-transform duration-300"
+            className="overflow-hidden hover:scale-105 transition duration-300"
           >
-            <CardContent className="flex flex-col gap-3">
+            
+            {/* IMAGE */}
+            <img
+              src={product.image}
+              alt={product.name}
+              className="w-full h-40 object-cover"
+            />
+
+            <CardContent className="p-5 flex flex-col gap-3">
               
               <h2 className="text-xl font-semibold text-green-700">
                 {product.name}
               </h2>
 
-              <p className="text-xs uppercase text-gray-400 tracking-wide">
+              <p className="text-xs uppercase text-gray-400">
                 {product.category}
               </p>
 
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-sm">
                 {product.description}
               </p>
 
