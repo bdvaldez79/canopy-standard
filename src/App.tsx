@@ -2,11 +2,11 @@ import React, { useState } from "react";
 
 const UNSPLASH_IMAGES = {
   "Professional Hose-End Sprayer":
-    "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80",
+    "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80&auto=format&fit=crop",
   "Digital Soil Moisture Meter":
-    "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600&q=80",
+    "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600&q=80&auto=format&fit=crop",
   "Heavy-Duty Nursery Cart":
-    "https://images.unsplash.com/photo-1617576683096-00fc8eecb3af?w=600&q=80",
+    "https://images.unsplash.com/photo-1617576683096-00fc8eecb3af?w=600&q=80&auto=format&fit=crop",
 } as const;
 
 const products = [
@@ -67,7 +67,9 @@ function ProductCard({ product }: { product: (typeof products)[number] }) {
         <p className="text-xs text-gray-400 mt-1 uppercase tracking-widest">
           {product.category}
         </p>
-        <p className="text-sm text-gray-600 mt-2 flex-1">{product.description}</p>
+        <p className="text-sm text-gray-600 mt-2 flex-1">
+          {product.description}
+        </p>
         <p className="text-lg font-bold mt-3">{product.price}</p>
         <button className="mt-4 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition font-medium">
           View Product
@@ -84,9 +86,11 @@ export default function App() {
         <h1 className="text-4xl font-bold text-green-900 mb-2">
           Canopy Standard 🌿
         </h1>
+
         <p className="text-gray-600 mb-2">
           Smart tools for plant care & pest control systems
         </p>
+
         <p className="text-xs text-gray-400 mb-8">
           Photos via{" "}
           <a
