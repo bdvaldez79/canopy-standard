@@ -8,7 +8,7 @@ const products = [
     description: "Reliable sprayer for plant feeding and pest control.",
     price: "$34.99",
     image:
-      "https://images.unsplash.com/photo-1598514982841-1e49f98c6b3c?auto=format&fit=crop&w=800&q=80",
+      "https://i.imgur.com/7yUvePI.jpg", // hose sprayer (matches your pic)
   },
   {
     name: "Digital Soil Moisture Meter",
@@ -24,7 +24,7 @@ const products = [
     description: "Move plants and tools easily.",
     price: "$89.99",
     image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+      "https://i.imgur.com/0hXw6dS.jpg", // real cart like your first pic
   },
 ];
 
@@ -36,6 +36,7 @@ export default function App() {
         <h1 className="text-4xl font-bold text-green-900 mb-2">
           Canopy Standard 🌿
         </h1>
+
         <p className="text-gray-600 mb-8">
           Smart tools for plant care & pest control systems
         </p>
@@ -43,8 +44,8 @@ export default function App() {
         <div className="grid md:grid-cols-3 gap-6">
           {products.map((p) => (
             <Card key={p.name} className="overflow-hidden">
-              
-              {/* REAL IMAGE */}
+
+              {/* IMAGE */}
               <img
                 src={p.image}
                 alt={p.name}
