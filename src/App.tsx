@@ -1,84 +1,74 @@
+import React from "react";
 import { Card, CardContent, Button } from "./ui";
 
 const products = [
   {
+    code: "CS-A01",
     name: "Professional Hose-End Sprayer",
-    category: "Irrigation",
-    price: 34.99,
+    category: "IRRIGATION",
     description: "Reliable sprayer for plant feeding and maintenance.",
-    image: "https://picsum.photos/400/200?1",
+    price: 34.99,
+    image: "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2",
   },
   {
+    code: "CS-A02",
     name: "Digital Soil Moisture Meter",
-    category: "Monitoring",
-    price: 49.99,
+    category: "MONITORING",
     description: "Helps prevent overwatering and underwatering.",
-    image: "https://picsum.photos/400/200?2",
+    price: 49.99,
+    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c",
   },
   {
+    code: "CS-A03",
     name: "Heavy-Duty Nursery Cart",
-    category: "Workflow Gear",
-    price: 89.99,
+    category: "WORKFLOW GEAR",
     description: "Move plants and tools easily.",
-    image: "https://picsum.photos/400/200?3",
+    price: 89.99,
+    image: "https://images.unsplash.com/photo-1592878904946-b3cd8ae243d0",
   },
 ];
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-100 via-white to-green-50 p-10">
-      
-      {/* HEADER */}
-      <div className="mb-10">
-        <h1 className="text-4xl font-bold text-green-800 flex items-center gap-2">
-          Canopy Standard 🌿
-        </h1>
-        <p className="text-gray-500 mt-2">
-          Smart tools for plant care & growing systems
-        </p>
-      </div>
+    <div className="min-h-screen bg-green-50 p-8">
+      <h1 className="text-3xl font-bold text-green-800 mb-1">
+        Canopy Standard 🌿
+      </h1>
+      <p className="text-gray-600 mb-6">
+        Smart tools for plant care & growing systems
+      </p>
 
-      {/* PRODUCTS GRID */}
-      <div className="grid gap-8 md:grid-cols-3">
-        {products.map((product, index) => (
-          <Card
-            key={index}
-            className="overflow-hidden hover:scale-105 transition duration-300"
-          >
-            {/* IMAGE */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {products.map((product) => (
+          <Card key={product.code}>
             <img
               src={product.image}
               alt={product.name}
               className="w-full h-40 object-cover"
             />
 
-            <CardContent className="p-5 flex flex-col gap-3">
-              
-              <h2 className="text-xl font-semibold text-green-700">
+            <CardContent>
+              <h2 className="text-lg font-semibold text-green-800">
                 {product.name}
               </h2>
 
-              <p className="text-xs uppercase text-gray-400">
+              <p className="text-xs text-gray-400 uppercase mt-1">
                 {product.category}
               </p>
 
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-600 text-sm mt-2">
                 {product.description}
               </p>
 
-              <p className="font-bold text-lg text-green-900 mt-2">
-                ${product.price}
+              <p className="font-bold mt-3">
+                ${product.price.toFixed(2)}
               </p>
 
-              <Button className="mt-4 w-full">
-                View Product
-              </Button>
-
+              <Button className="mt-4">View Product</Button>
             </CardContent>
           </Card>
         ))}
       </div>
-
     </div>
   );
 }
