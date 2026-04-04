@@ -15,8 +15,7 @@ const products = [
     category: "MONITORING",
     description: "Helps prevent overwatering and underwatering.",
     price: "$49.99",
-    image:
-      "/soil-moisture-meter.jpg",
+    image: "/soil-moisture-meter.jpg", // KEEP YOUR IMAGE
   },
   {
     name: "Heavy-Duty Nursery Cart",
@@ -24,7 +23,7 @@ const products = [
     description: "Move plants and tools easily.",
     price: "$89.99",
     image:
-      "/nursery-cart.jpg",
+      "https://images.unsplash.com/photo-1598514983318-2f64f8f4796c?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
