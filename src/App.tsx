@@ -1,60 +1,140 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 
-const IMAGES = {
-  "Professional Hose-End Sprayer":
-    "https://images.unsplash.com/photo-1610891170442-79392fc76493?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "Digital Soil Moisture Meter":
-    "https://plus.unsplash.com/premium_photo-1661902899911-d7b89906e638?w=1200&q=80&auto=format&fit=crop",
-  "Heavy-Duty Nursery Cart":
-    "https://plus.unsplash.com/premium_photo-1663012834491-6ba79afac048?w=1200&q=80&auto=format&fit=crop",
+const plantImages = {
+  "Monstera Deliciosa":
+    "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?w=1200&q=80&auto=format&fit=crop",
+  "Phalaenopsis Orchid":
+    "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1200&q=80&auto=format&fit=crop",
+  "Bird of Paradise":
+    "https://images.unsplash.com/photo-1593691509543-c55fb32e5f99?w=1200&q=80&auto=format&fit=crop",
+  "Anthurium":
+    "https://images.unsplash.com/photo-1614594975525-e45190c55d0b?w=1200&q=80&auto=format&fit=crop",
+  "ZZ Plant":
+    "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=1200&q=80&auto=format&fit=crop",
+  "Hoya Carnosa":
+    "https://images.unsplash.com/photo-1512428813834-c702c7702b78?w=1200&q=80&auto=format&fit=crop",
 } as const;
 
-const products = [
+const plants = [
   {
-    name: "Professional Hose-End Sprayer",
-    category: "IRRIGATION",
-    description: "Reliable sprayer for plant feeding and pest control.",
-    price: "$34.99",
+    name: "Monstera Deliciosa",
+    category: "TROPICAL",
+    collection: "Statement Plants",
+    description:
+      "A sculptural tropical with iconic split leaves and strong visual presence.",
+    price: "$42.00",
     features: [
-      "Great for liquid fertilizer and treatment application",
-      "Simple hose attachment setup",
-      "Good coverage for garden beds and outdoor plants",
+      "Bright indirect light preferred",
+      "Best when allowed to dry slightly between waterings",
+      "Strong fit for interiors with vertical room to grow",
     ],
+    careNote: "Best for bright rooms and collectors who want a dramatic foliage focal point.",
     buyUrl: "https://www.amazon.com/",
   },
   {
-    name: "Digital Soil Moisture Meter",
-    category: "MONITORING",
-    description: "Helps prevent overwatering and underwatering.",
-    price: "$49.99",
+    name: "Phalaenopsis Orchid",
+    category: "FLOWERING",
+    collection: "Elegant Bloomers",
+    description:
+      "A refined flowering plant that brings long-lasting blooms and a polished look.",
+    price: "$36.00",
     features: [
-      "Fast moisture readings at the root zone",
-      "Reduces watering guesswork",
-      "Useful for collectors and indoor plant care",
+      "Long bloom window in stable indoor conditions",
+      "Works well in decorative gift-oriented spaces",
+      "Likes warmth, airflow, and consistent but careful watering",
     ],
+    careNote: "Best for gifting, dining tables, and calm, elegant interiors.",
     buyUrl: "https://www.amazon.com/",
   },
   {
-    name: "Heavy-Duty Nursery Cart",
-    category: "WORKFLOW GEAR",
-    description: "Move plants and tools easily.",
-    price: "$89.99",
+    name: "Bird of Paradise",
+    category: "TROPICAL",
+    collection: "Statement Plants",
+    description:
+      "A large-leaf tropical that gives interiors a lush, architectural feel.",
+    price: "$68.00",
     features: [
-      "Helps move pots, trays, and supplies",
-      "Good for patios, greenhouses, and garden work",
-      "Makes plant workflow easier and faster",
+      "High light plant with strong growth potential",
+      "Excellent for open corners and large rooms",
+      "Creates a clean, premium tropical silhouette",
     ],
+    careNote: "Best for sunny interiors and buyers who want a bold, resort-like plant.",
+    buyUrl: "https://www.amazon.com/",
+  },
+  {
+    name: "Anthurium",
+    category: "FLOWERING",
+    collection: "Collector Tropicals",
+    description:
+      "Glossy foliage and colorful blooms make this a strong premium indoor pick.",
+    price: "$48.00",
+    features: [
+      "High humidity-friendly tropical",
+      "Good choice for warm interiors and collectors",
+      "Pairs well with refined decorative pots and plant styling",
+    ],
+    careNote: "Best for tropical-leaning plant lovers who want color and shine.",
+    buyUrl: "https://www.amazon.com/",
+  },
+  {
+    name: "ZZ Plant",
+    category: "LOW LIGHT",
+    collection: "Easy Care",
+    description:
+      "A resilient plant with thick glossy foliage and a reputation for tolerance.",
+    price: "$29.00",
+    features: [
+      "Handles lower-light interiors better than many tropicals",
+      "Low-maintenance feel for busy buyers",
+      "Strong fit for offices, shelves, and entry points",
+    ],
+    careNote: "Best for beginners, darker rooms, and low-effort plant ownership.",
+    buyUrl: "https://www.amazon.com/",
+  },
+  {
+    name: "Hoya Carnosa",
+    category: "VINES",
+    collection: "Trailing Plants",
+    description:
+      "A waxy-leaved trailing plant with a softer, more intimate collector appeal.",
+    price: "$31.00",
+    features: [
+      "Great on shelves and hanging placements",
+      "Collector-friendly without feeling too difficult",
+      "Adds texture and softer movement to a plant arrangement",
+    ],
+    careNote: "Best for shelves, hanging displays, and smaller-space plant styling.",
     buyUrl: "https://www.amazon.com/",
   },
 ] as const;
 
-function CanopyLogo({ className = "" }: { className?: string }) {
+const weeklyNotes = [
+  {
+    title: "This Week in Plants",
+    summary:
+      "A recurring editorial post that translates plant-world developments, care ideas, and seasonal shifts into buyer-friendly recommendations.",
+  },
+  {
+    title: "Collector Notes",
+    summary:
+      "Short observations on tropical trends, flowering favorites, and what is looking especially strong right now.",
+  },
+  {
+    title: "Care Briefing",
+    summary:
+      "A simple weekly note linking science-informed care logic to the plants featured on the shop floor.",
+  },
+];
+
+const collections = ["All", "Statement Plants", "Elegant Bloomers", "Collector Tropicals", "Easy Care", "Trailing Plants"] as const;
+
+function CanopyLogo() {
   return (
-    <div className={`flex flex-col items-start select-none ${className}`}>
+    <div className="select-none">
       <div
         style={{
           fontFamily: "'Cormorant Garamond', serif",
-          fontSize: "72px",
+          fontSize: "68px",
           fontWeight: 300,
           lineHeight: 1,
           color: "#2a231c",
@@ -64,7 +144,6 @@ function CanopyLogo({ className = "" }: { className?: string }) {
         }}
       >
         CS
-
         <div
           style={{
             position: "absolute",
@@ -115,7 +194,7 @@ function CanopyLogo({ className = "" }: { className?: string }) {
             marginTop: "3px",
           }}
         >
-          Refined Essentials
+          Refined Plants
         </div>
       </div>
     </div>
@@ -144,92 +223,24 @@ function VineTopLeft() {
         strokeWidth="1"
         strokeLinecap="round"
       />
-
-      <g transform="translate(18, 48) rotate(-30)">
-        <path
-          d="M0,0 C-10,-18, -24,-22, -14,-8 C-6,2, 0,0 0,0Z"
-          fill="#5d8c48"
-        />
-        <path
-          d="M0,0 C10,-16, 22,-18, 14,-6 C6,2, 0,0 0,0Z"
-          fill="#7ab560"
-        />
-        <line
-          x1="0"
-          y1="0"
-          x2="-8"
-          y2="-14"
-          stroke="#4a7038"
-          strokeWidth="0.5"
-        />
-      </g>
-
-      <g transform="translate(22, 100) rotate(20)">
-        <path
-          d="M0,0 C-12,-20, -28,-24, -16,-8 C-6,4, 0,0 0,0Z"
-          fill="#6aaa52"
-        />
-        <path
-          d="M0,0 C8,-18, 20,-20, 12,-7 C4,3, 0,0 0,0Z"
-          fill="#4e8040"
-        />
-        <line
-          x1="0"
-          y1="0"
-          x2="-10"
-          y2="-16"
-          stroke="#3d6630"
-          strokeWidth="0.5"
-        />
-      </g>
-
-      <g transform="translate(14, 155) rotate(-20)">
-        <path
-          d="M0,0 C-14,-22, -30,-26, -18,-9 C-7,5, 0,0 0,0Z"
-          fill="#5d8c48"
-        />
-        <path
-          d="M0,0 C10,-20, 26,-22, 16,-8 C6,4, 0,0 0,0Z"
-          fill="#86c46c"
-        />
-      </g>
-
-      <g transform="translate(62, 80) rotate(10)">
-        <path
-          d="M0,0 C-10,-16, -22,-18, -13,-6 C-5,3, 0,0 0,0Z"
-          fill="#7ab560"
-        />
-        <path
-          d="M0,0 C8,-14, 18,-16, 11,-5 C4,3, 0,0 0,0Z"
-          fill="#5d8c48"
-        />
-      </g>
-
-      <g transform="translate(68, 140) rotate(-15)">
-        <path
-          d="M0,0 C-12,-20, -26,-22, -15,-7 C-5,4, 0,0 0,0Z"
-          fill="#6aaa52"
-        />
-        <path
-          d="M0,0 C10,-18, 22,-20, 13,-7 C4,3, 0,0 0,0Z"
-          fill="#4e8040"
-        />
-      </g>
-
-      <path
-        d="M20,70 C 28,62, 36,66, 32,74"
-        fill="none"
-        stroke="#7aaa60"
-        strokeWidth="0.8"
-        strokeLinecap="round"
-      />
-      <path
-        d="M16,130 C 8,122, 4,126, 8,134"
-        fill="none"
-        stroke="#5a7a4a"
-        strokeWidth="0.8"
-        strokeLinecap="round"
-      />
+      {[
+        [18, 48, -30],
+        [22, 100, 20],
+        [14, 155, -20],
+        [62, 80, 10],
+        [68, 140, -15],
+      ].map(([x, y, r], i) => (
+        <g key={i} transform={`translate(${x}, ${y}) rotate(${r})`}>
+          <path
+            d="M0,0 C-10,-18, -24,-22, -14,-8 C-6,2, 0,0 0,0Z"
+            fill={i % 2 === 0 ? "#5d8c48" : "#6aaa52"}
+          />
+          <path
+            d="M0,0 C10,-16, 22,-18, 14,-6 C6,2, 0,0 0,0Z"
+            fill={i % 2 === 0 ? "#7ab560" : "#4e8040"}
+          />
+        </g>
+      ))}
     </svg>
   );
 }
@@ -256,97 +267,45 @@ function VineTopRight() {
         strokeWidth="1"
         strokeLinecap="round"
       />
-
-      <g transform="translate(322, 48) rotate(30)">
-        <path
-          d="M0,0 C10,-18, 24,-22, 14,-8 C6,2, 0,0 0,0Z"
-          fill="#5d8c48"
-        />
-        <path
-          d="M0,0 C-10,-16, -22,-18, -14,-6 C-6,2, 0,0 0,0Z"
-          fill="#7ab560"
-        />
-      </g>
-
-      <g transform="translate(318, 100) rotate(-20)">
-        <path
-          d="M0,0 C12,-20, 28,-24, 16,-8 C6,4, 0,0 0,0Z"
-          fill="#6aaa52"
-        />
-        <path
-          d="M0,0 C-8,-18, -20,-20, -12,-7 C-4,3, 0,0 0,0Z"
-          fill="#4e8040"
-        />
-      </g>
-
-      <g transform="translate(326, 155) rotate(20)">
-        <path
-          d="M0,0 C14,-22, 30,-26, 18,-9 C7,5, 0,0 0,0Z"
-          fill="#5d8c48"
-        />
-        <path
-          d="M0,0 C-10,-20, -26,-22, -16,-8 C-6,4, 0,0 0,0Z"
-          fill="#86c46c"
-        />
-      </g>
-
-      <g transform="translate(278, 80) rotate(-10)">
-        <path
-          d="M0,0 C10,-16, 22,-18, 13,-6 C5,3, 0,0 0,0Z"
-          fill="#7ab560"
-        />
-        <path
-          d="M0,0 C-8,-14, -18,-16, -11,-5 C-4,3, 0,0 0,0Z"
-          fill="#5d8c48"
-        />
-      </g>
-
-      <g transform="translate(272, 140) rotate(15)">
-        <path
-          d="M0,0 C12,-20, 26,-22, 15,-7 C5,4, 0,0 0,0Z"
-          fill="#6aaa52"
-        />
-        <path
-          d="M0,0 C-10,-18, -22,-20, -13,-7 C-4,3, 0,0 0,0Z"
-          fill="#4e8040"
-        />
-      </g>
-
-      <path
-        d="M320,70 C 312,62, 304,66, 308,74"
-        fill="none"
-        stroke="#7aaa60"
-        strokeWidth="0.8"
-        strokeLinecap="round"
-      />
-      <path
-        d="M324,130 C 332,122, 336,126, 332,134"
-        fill="none"
-        stroke="#5a7a4a"
-        strokeWidth="0.8"
-        strokeLinecap="round"
-      />
+      {[
+        [322, 48, 30],
+        [318, 100, -20],
+        [326, 155, 20],
+        [278, 80, -10],
+        [272, 140, 15],
+      ].map(([x, y, r], i) => (
+        <g key={i} transform={`translate(${x}, ${y}) rotate(${r})`}>
+          <path
+            d="M0,0 C10,-18, 24,-22, 14,-8 C6,2, 0,0 0,0Z"
+            fill={i % 2 === 0 ? "#5d8c48" : "#6aaa52"}
+          />
+          <path
+            d="M0,0 C-10,-16, -22,-18, -14,-6 C-6,2, 0,0 0,0Z"
+            fill={i % 2 === 0 ? "#7ab560" : "#4e8040"}
+          />
+        </g>
+      ))}
     </svg>
   );
 }
 
 function ProductCard({
-  product,
+  plant,
   onView,
 }: {
-  product: (typeof products)[number];
+  plant: (typeof plants)[number];
   onView: () => void;
 }) {
   const [imgLoaded, setImgLoaded] = useState(false);
   const [imgError, setImgError] = useState(false);
-  const imgUrl = IMAGES[product.name];
+  const imgUrl = plantImages[plant.name];
 
   return (
     <div
       className="flex flex-col overflow-hidden border border-stone-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
       style={{ borderRadius: "2px" }}
     >
-      <div className="relative h-52 w-full overflow-hidden bg-stone-50">
+      <div className="relative h-56 w-full overflow-hidden bg-stone-50">
         {!imgLoaded && !imgError && (
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="h-6 w-6 animate-spin rounded-full border-2 border-stone-200 border-t-stone-500" />
@@ -360,7 +319,7 @@ function ProductCard({
         ) : (
           <img
             src={imgUrl}
-            alt={product.name}
+            alt={plant.name}
             className={`h-full w-full object-cover transition-all duration-700 hover:scale-105 ${
               imgLoaded ? "opacity-100" : "opacity-0"
             }`}
@@ -382,21 +341,30 @@ function ProductCard({
             marginBottom: "8px",
           }}
         >
-          {product.category}
+          {plant.category}
         </p>
 
         <h2
           style={{
             fontFamily: "'Cormorant Garamond', serif",
-            fontSize: "22px",
+            fontSize: "24px",
             fontWeight: 400,
             color: "#2a231c",
-            lineHeight: 1.2,
+            lineHeight: 1.15,
             marginBottom: "10px",
           }}
         >
-          {product.name}
+          {plant.name}
         </h2>
+
+        <p
+          className="mb-3 text-xs uppercase tracking-[0.16em] text-stone-400"
+          style={{
+            fontFamily: "'Josefin Sans', sans-serif",
+          }}
+        >
+          {plant.collection}
+        </p>
 
         <p
           className="flex-1 text-sm leading-relaxed text-stone-500"
@@ -405,7 +373,7 @@ function ProductCard({
             fontWeight: 300,
           }}
         >
-          {product.description}
+          {plant.description}
         </p>
 
         <div className="mt-5 flex items-center justify-between">
@@ -417,7 +385,7 @@ function ProductCard({
               color: "#2a231c",
             }}
           >
-            {product.price}
+            {plant.price}
           </span>
 
           <button
@@ -451,15 +419,15 @@ function ProductCard({
 }
 
 function ProductDetail({
-  product,
+  plant,
   onBack,
 }: {
-  product: (typeof products)[number];
+  plant: (typeof plants)[number];
   onBack: () => void;
 }) {
   const [imgLoaded, setImgLoaded] = useState(false);
   const [imgError, setImgError] = useState(false);
-  const imgUrl = IMAGES[product.name];
+  const imgUrl = plantImages[plant.name];
 
   return (
     <div
@@ -481,7 +449,7 @@ function ProductDetail({
           cursor: "pointer",
         }}
       >
-        ← Back to products
+        ← Back to plants
       </button>
 
       <div className="grid gap-12 md:grid-cols-2">
@@ -489,7 +457,7 @@ function ProductDetail({
           className="overflow-hidden bg-stone-50"
           style={{ borderRadius: "2px" }}
         >
-          <div className="relative h-[300px] md:h-[440px]">
+          <div className="relative h-[320px] md:h-[480px]">
             {!imgLoaded && !imgError && (
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="h-8 w-8 animate-spin rounded-full border-2 border-stone-200 border-t-stone-500" />
@@ -503,7 +471,7 @@ function ProductDetail({
             ) : (
               <img
                 src={imgUrl}
-                alt={product.name}
+                alt={plant.name}
                 className={`h-full w-full object-cover transition-opacity duration-700 ${
                   imgLoaded ? "opacity-100" : "opacity-0"
                 }`}
@@ -526,21 +494,28 @@ function ProductDetail({
               marginBottom: "12px",
             }}
           >
-            {product.category}
+            {plant.category}
           </p>
 
           <h2
             style={{
               fontFamily: "'Cormorant Garamond', serif",
-              fontSize: "38px",
+              fontSize: "40px",
               fontWeight: 400,
               color: "#2a231c",
               lineHeight: 1.1,
-              marginBottom: "16px",
+              marginBottom: "12px",
             }}
           >
-            {product.name}
+            {plant.name}
           </h2>
+
+          <p
+            className="mb-5 text-xs uppercase tracking-[0.18em] text-stone-400"
+            style={{ fontFamily: "'Josefin Sans', sans-serif" }}
+          >
+            {plant.collection}
+          </p>
 
           <div
             style={{
@@ -564,13 +539,23 @@ function ProductDetail({
           </div>
 
           <p
+            className="mb-5 text-sm leading-7 text-stone-500"
+            style={{
+              fontFamily: "'Josefin Sans', sans-serif",
+              fontWeight: 300,
+            }}
+          >
+            {plant.description}
+          </p>
+
+          <p
             className="mb-8 text-sm leading-7 text-stone-500"
             style={{
               fontFamily: "'Josefin Sans', sans-serif",
               fontWeight: 300,
             }}
           >
-            {product.description}
+            {plant.careNote}
           </p>
 
           <p
@@ -582,7 +567,7 @@ function ProductDetail({
               marginBottom: "24px",
             }}
           >
-            {product.price}
+            {plant.price}
           </p>
 
           <div className="mb-8">
@@ -597,11 +582,11 @@ function ProductDetail({
                 marginBottom: "14px",
               }}
             >
-              Features
+              Why It Belongs Here
             </p>
 
             <ul className="space-y-3">
-              {product.features.map((feature) => (
+              {plant.features.map((feature) => (
                 <li
                   key={feature}
                   className="flex items-start gap-3 text-sm text-stone-600"
@@ -629,7 +614,7 @@ function ProductDetail({
 
           <div className="flex gap-4">
             <a
-              href={product.buyUrl}
+              href={plant.buyUrl}
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -686,29 +671,83 @@ function ProductDetail({
   );
 }
 
+function WeeklyNoteCard({
+  title,
+  summary,
+}: {
+  title: string;
+  summary: string;
+}) {
+  return (
+    <div
+      className="border border-stone-100 bg-white p-6 shadow-sm"
+      style={{ borderRadius: "2px" }}
+    >
+      <p
+        style={{
+          fontFamily: "'Josefin Sans', sans-serif",
+          fontSize: "9px",
+          fontWeight: 600,
+          letterSpacing: "0.25em",
+          textTransform: "uppercase",
+          color: "#8a9e7a",
+          marginBottom: "10px",
+        }}
+      >
+        Weekly Plant World
+      </p>
+
+      <h3
+        style={{
+          fontFamily: "'Cormorant Garamond', serif",
+          fontSize: "26px",
+          fontWeight: 400,
+          color: "#2a231c",
+          lineHeight: 1.15,
+          marginBottom: "12px",
+        }}
+      >
+        {title}
+      </h3>
+
+      <p
+        className="text-sm leading-7 text-stone-500"
+        style={{
+          fontFamily: "'Josefin Sans', sans-serif",
+          fontWeight: 300,
+        }}
+      >
+        {summary}
+      </p>
+    </div>
+  );
+}
+
 export default function App() {
-  const [selectedProduct, setSelectedProduct] =
-    useState<(typeof products)[number] | null>(null);
+  const [selectedPlant, setSelectedPlant] =
+    useState<(typeof plants)[number] | null>(null);
+  const [activeCollection, setActiveCollection] =
+    useState<(typeof collections)[number]>("All");
+
+  const visiblePlants = useMemo(() => {
+    if (activeCollection === "All") return plants;
+    return plants.filter((p) => p.collection === activeCollection);
+  }, [activeCollection]);
 
   return (
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;600&display=swap');
 
-        * {
-          box-sizing: border-box;
-        }
-
-        body {
-          margin: 0;
-          background: #f7f4ef;
-        }
+        * { box-sizing: border-box; }
+        body { margin: 0; background: #f7f4ef; }
       `}</style>
 
       <div
         className="relative min-h-screen overflow-x-hidden"
         style={{
-          background: "linear-gradient(160deg, #f2ede5 0%, #f7f4ef 50%, #eef3ec 100%)",
+          background:
+            "linear-gradient(160deg, #f2ede5 0%, #f7f4ef 50%, #eef3ec 100%)",
         }}
       >
         <VineTopLeft />
@@ -728,7 +767,7 @@ export default function App() {
             <CanopyLogo />
 
             <nav className="hidden gap-8 pt-2 md:flex">
-              {["Shop", "Collections", "About"].map((item) => (
+              {["Shop", "Collections", "Weekly Notes"].map((item) => (
                 <a
                   key={item}
                   href="#"
@@ -754,93 +793,160 @@ export default function App() {
             </nav>
           </header>
 
-          {!selectedProduct && (
-            <div className="mb-10">
-              <p
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: "13px",
-                  fontWeight: 300,
-                  letterSpacing: "0.15em",
-                  color: "#8a9e7a",
-                  textTransform: "uppercase",
-                  marginBottom: "6px",
-                }}
-              >
-                Our Collection
-              </p>
+          {!selectedPlant && (
+            <>
+              <div className="mb-10">
+                <p
+                  style={{
+                    fontFamily: "'Cormorant Garamond', serif",
+                    fontSize: "13px",
+                    fontWeight: 300,
+                    letterSpacing: "0.15em",
+                    color: "#8a9e7a",
+                    textTransform: "uppercase",
+                    marginBottom: "6px",
+                  }}
+                >
+                  Scientifically Curated Plant Floor
+                </p>
 
-              <h1
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: "32px",
-                  fontWeight: 400,
-                  color: "#2a231c",
-                  lineHeight: 1.2,
-                }}
-              >
-                Smart tools for plant care
-                <br />
-                & pest control systems
-              </h1>
+                <h1
+                  style={{
+                    fontFamily: "'Cormorant Garamond', serif",
+                    fontSize: "32px",
+                    fontWeight: 400,
+                    color: "#2a231c",
+                    lineHeight: 1.2,
+                  }}
+                >
+                  Refined plants, grouped by care logic,
+                  <br />
+                  not random trend chasing
+                </h1>
 
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 0,
-                  marginTop: "16px",
-                }}
-              >
-                <div style={{ width: "48px", height: "1px", background: "#c8b89a" }} />
                 <div
                   style={{
-                    width: "4px",
-                    height: "4px",
-                    background: "#c8b89a",
-                    transform: "rotate(45deg)",
-                    margin: "0 6px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 0,
+                    marginTop: "16px",
                   }}
-                />
+                >
+                  <div
+                    style={{
+                      width: "48px",
+                      height: "1px",
+                      background: "#c8b89a",
+                    }}
+                  />
+                  <div
+                    style={{
+                      width: "4px",
+                      height: "4px",
+                      background: "#c8b89a",
+                      transform: "rotate(45deg)",
+                      margin: "0 6px",
+                    }}
+                  />
+                </div>
+
+                <p
+                  style={{
+                    fontFamily: "'Josefin Sans', sans-serif",
+                    fontSize: "10px",
+                    fontWeight: 300,
+                    letterSpacing: "0.1em",
+                    color: "#aaa",
+                    marginTop: "10px",
+                  }}
+                >
+                  Inspired by plant science themes like soil quality, resource use,
+                  plant form, and flowering diversity.
+                </p>
               </div>
 
-              <p
-                style={{
-                  fontFamily: "'Josefin Sans', sans-serif",
-                  fontSize: "10px",
-                  fontWeight: 300,
-                  letterSpacing: "0.1em",
-                  color: "#aaa",
-                  marginTop: "10px",
-                }}
-              >
-                Photos via{" "}
-                <a
-                  href="https://unsplash.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: "#8a9e7a", textDecoration: "none" }}
-                >
-                  Unsplash
-                </a>
-              </p>
-            </div>
+              <div className="mb-10 flex flex-wrap gap-3">
+                {collections.map((collection) => {
+                  const active = activeCollection === collection;
+                  return (
+                    <button
+                      key={collection}
+                      onClick={() => setActiveCollection(collection)}
+                      style={{
+                        fontFamily: "'Josefin Sans', sans-serif",
+                        fontSize: "10px",
+                        fontWeight: 600,
+                        letterSpacing: "0.18em",
+                        textTransform: "uppercase",
+                        color: active ? "#fff" : "#4a3d30",
+                        background: active ? "#3d5c30" : "rgba(255,255,255,0.7)",
+                        border: active ? "1px solid #3d5c30" : "1px solid #ddd4c7",
+                        padding: "10px 16px",
+                        cursor: "pointer",
+                        transition: "all 0.2s",
+                      }}
+                    >
+                      {collection}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+                {visiblePlants.map((plant) => (
+                  <ProductCard
+                    key={plant.name}
+                    plant={plant}
+                    onView={() => setSelectedPlant(plant)}
+                  />
+                ))}
+              </div>
+
+              <section className="mt-16">
+                <div className="mb-8">
+                  <p
+                    style={{
+                      fontFamily: "'Josefin Sans', sans-serif",
+                      fontSize: "9px",
+                      fontWeight: 600,
+                      letterSpacing: "0.25em",
+                      textTransform: "uppercase",
+                      color: "#8a9e7a",
+                      marginBottom: "8px",
+                    }}
+                  >
+                    Weekly Editorial
+                  </p>
+
+                  <h2
+                    style={{
+                      fontFamily: "'Cormorant Garamond', serif",
+                      fontSize: "30px",
+                      fontWeight: 400,
+                      color: "#2a231c",
+                    }}
+                  >
+                    Plant World Notes
+                  </h2>
+                </div>
+
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+                  {weeklyNotes.map((note) => (
+                    <WeeklyNoteCard
+                      key={note.title}
+                      title={note.title}
+                      summary={note.summary}
+                    />
+                  ))}
+                </div>
+              </section>
+            </>
           )}
 
-          {!selectedProduct ? (
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-              {products.map((product) => (
-                <ProductCard
-                  key={product.name}
-                  product={product}
-                  onView={() => setSelectedProduct(product)}
-                />
-              ))}
-            </div>
-          ) : (
+          {selectedPlant && (
             <ProductDetail
-              product={selectedProduct}
-              onBack={() => setSelectedProduct(null)}
+              plant={selectedPlant}
+              onBack={() => setSelectedPlant(null)}
             />
           )}
 
@@ -855,7 +961,7 @@ export default function App() {
                 color: "#bbb",
               }}
             >
-              © 2024 Canopy Standard
+              © 2026 Canopy Standard
             </p>
 
             <p
@@ -868,7 +974,7 @@ export default function App() {
                 color: "#bbb",
               }}
             >
-              Refined Essentials
+              Refined Plants
             </p>
           </footer>
         </div>
