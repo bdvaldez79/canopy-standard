@@ -8,7 +8,7 @@ const products = [
     category: "IRRIGATION",
     description: "Reliable sprayer for plant feeding and maintenance.",
     price: 34.99,
-    image: "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2",
+    image: "https://images.unsplash.com/photo-1598514983318-2f64f8f4796c",
   },
   {
     code: "CS-A02",
@@ -16,7 +16,7 @@ const products = [
     category: "MONITORING",
     description: "Helps prevent overwatering and underwatering.",
     price: 49.99,
-    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c",
+    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952",
   },
   {
     code: "CS-A03",
@@ -24,7 +24,7 @@ const products = [
     category: "WORKFLOW GEAR",
     description: "Move plants and tools easily.",
     price: 89.99,
-    image: "https://images.unsplash.com/photo-1592878904946-b3cd8ae243d0",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
   },
 ];
 
