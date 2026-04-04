@@ -7,23 +7,21 @@ const products = [
     category: "IRRIGATION",
     description: "Reliable sprayer for plant feeding and pest control.",
     price: "$34.99",
-    image:
-      "https://cdn.shopify.com/s/files/1/0310/3902/9386/files/220-10_foVD.jpg?v=1726194745897",
+    image: "/hose-sprayer.jpg",
   },
   {
     name: "Digital Soil Moisture Meter",
     category: "MONITORING",
     description: "Helps prevent overwatering and underwatering.",
     price: "$49.99",
-    image: "/soil-moisture-meter.jpg", // KEEP YOUR IMAGE
+    image: "/soil-moisture-meter.jpg",
   },
   {
     name: "Heavy-Duty Nursery Cart",
     category: "WORKFLOW GEAR",
     description: "Move plants and tools easily.",
     price: "$89.99",
-    image:
-      "https://images.unsplash.com/photo-1598514983318-2f64f8f4796c?auto=format&fit=crop&w=800&q=80",
+    image: "/nursery-cart.jpg",
   },
 ];
 
@@ -39,9 +37,9 @@ export default function App() {
           Smart tools for plant care & pest control systems
         </p>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {products.map((p) => (
-            <Card key={p.name} className="overflow-hidden">
+            <Card key={p.name}>
               <img
                 src={p.image}
                 alt={p.name}
@@ -65,7 +63,7 @@ export default function App() {
                   {p.price}
                 </p>
 
-                <Button className="mt-4 w-full">
+                <Button className="mt-4">
                   View Product
                 </Button>
               </CardContent>
