@@ -89,18 +89,16 @@ export default function App() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
 
-        .montserrat-title {
-          font-family: 'Montserrat', sans-serif;
+        .playfair-title {
+          font-family: 'Playfair Display', serif;
         }
       `}</style>
 
       <div className="min-h-screen bg-gradient-to-b from-[#eaf6ea] via-[#f3fbf4] to-[#ffffff]">
         <div className="max-w-6xl mx-auto px-8 py-12">
-          <h1
-            className="montserrat-title text-5xl md:text-6xl text-green-900 mb-3 font-light tracking-[0.02em]"
-          >
+          <h1 className="playfair-title text-5xl md:text-6xl text-green-900 mb-3 font-medium tracking-[0.01em]">
             Canopy Standard 🌿
           </h1>
 
