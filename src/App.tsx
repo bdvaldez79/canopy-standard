@@ -37,7 +37,7 @@ function ProductCard({ product }: { product: (typeof products)[number] }) {
   const imgUrl = IMAGES[product.name];
 
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden border border-green-100 flex flex-col">
+    <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-md overflow-hidden border border-green-100 flex flex-col">
       <div className="relative w-full h-48 bg-green-50">
         {!imgLoaded && !imgError && (
           <div className="absolute inset-0 flex items-center justify-center">
@@ -62,22 +62,22 @@ function ProductCard({ product }: { product: (typeof products)[number] }) {
         )}
       </div>
 
-      <div className="p-4 flex flex-col flex-1">
+      <div className="p-5 flex flex-col flex-1">
         <h2 className="text-lg font-semibold text-green-900">
           {product.name}
         </h2>
 
-        <p className="text-xs text-gray-400 mt-1 uppercase tracking-widest">
+        <p className="text-xs text-gray-400 mt-1 uppercase tracking-[0.18em]">
           {product.category}
         </p>
 
-        <p className="text-sm text-gray-600 mt-2 flex-1">
+        <p className="text-sm text-gray-600 mt-3 flex-1">
           {product.description}
         </p>
 
-        <p className="text-lg font-bold mt-3">{product.price}</p>
+        <p className="text-2xl font-bold mt-4 text-gray-900">{product.price}</p>
 
-        <button className="mt-4 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition font-medium">
+        <button className="mt-5 w-full bg-green-600 hover:bg-green-700 text-white py-2.5 rounded-xl transition font-medium">
           View Product
         </button>
       </div>
@@ -87,41 +87,46 @@ function ProductCard({ product }: { product: (typeof products)[number] }) {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#f3fbf4] p-8">
-      <div className="max-w-6xl mx-auto">
-        <h1
-          className="text-5xl text-green-900 mb-2 font-light tracking-wide"
-          style={{
-            fontFamily:
-              '"Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif',
-            letterSpacing: "0.02em",
-          }}
-        >
-          Canopy Standard 🌿
-        </h1>
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
-        <p className="text-gray-600 mb-2">
-          Smart tools for plant care & pest control systems
-        </p>
+        .montserrat-title {
+          font-family: 'Montserrat', sans-serif;
+        }
+      `}</style>
 
-        <p className="text-xs text-gray-400 mb-8">
-          Photos via{" "}
-          <a
-            href="https://unsplash.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-green-600"
+      <div className="min-h-screen bg-gradient-to-b from-[#eaf6ea] via-[#f3fbf4] to-[#ffffff]">
+        <div className="max-w-6xl mx-auto px-8 py-12">
+          <h1
+            className="montserrat-title text-5xl md:text-6xl text-green-900 mb-3 font-light tracking-[0.02em]"
           >
-            Unsplash
-          </a>
-        </p>
+            Canopy Standard 🌿
+          </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {products.map((p) => (
-            <ProductCard key={p.name} product={p} />
-          ))}
+          <p className="text-gray-600 mb-2 text-base">
+            Smart tools for plant care & pest control systems
+          </p>
+
+          <p className="text-xs text-gray-400 mb-10">
+            Photos via{" "}
+            <a
+              href="https://unsplash.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-green-600"
+            >
+              Unsplash
+            </a>
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {products.map((p) => (
+              <ProductCard key={p.name} product={p} />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
