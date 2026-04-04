@@ -2,11 +2,9 @@ import React, { useState } from "react";
 
 const UNSPLASH_IMAGES = {
   "Professional Hose-End Sprayer":
-    "https://images.unsplash.com/photo-1598514983318-2f64f8f4796c?w=600&q=80&auto=format&fit=crop",
-
+    "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&q=80&auto=format&fit=crop",
   "Digital Soil Moisture Meter":
     "https://plus.unsplash.com/premium_photo-1661902899911-d7b89906e638?w=600&q=80&auto=format&fit=crop",
-
   "Heavy-Duty Nursery Cart":
     "https://plus.unsplash.com/premium_photo-1663012834491-6ba79afac048?w=600&q=80&auto=format&fit=crop",
 } as const;
