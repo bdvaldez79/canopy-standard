@@ -77,4 +77,50 @@ function ProductArt({ kind }: { kind: string }) {
 
       {/* wheels */}
       <circle cx="220" cy="250" r="28" fill="#1a1a1a" />
-      <circle
+      <circle cx="220" cy="250" r="12" fill="#f4c542" />
+
+      <circle cx="380" cy="250" r="28" fill="#1a1a1a" />
+      <circle cx="380" cy="250" r="12" fill="#f4c542" />
+
+      {/* shadow */}
+      <ellipse cx="300" cy="275" rx="180" ry="15" fill="#b7d7b5" opacity="0.4" />
+    </svg>
+  );
+}
+
+export default function App() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-[#f3fbf4] to-white p-10">
+      <h1 className="text-3xl font-bold text-green-800 mb-2">
+        Canopy Standard 🌿
+      </h1>
+      <p className="text-gray-600 mb-8">
+        Smart tools for plant care & growing systems
+      </p>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {products.map((p, i) => (
+          <Card key={i}>
+            <ProductArt kind={p.kind} />
+
+            <CardContent>
+              <h2 className="text-lg font-semibold text-green-800">
+                {p.name}
+              </h2>
+
+              <p className="text-xs text-gray-400 mb-1">{p.category}</p>
+
+              <p className="text-gray-600 text-sm mb-3">
+                {p.description}
+              </p>
+
+              <p className="font-bold mb-4">{p.price}</p>
+
+              <Button>View Product</Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
