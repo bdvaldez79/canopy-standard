@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 
+// Unsplash images
 const UNSPLASH_IMAGES = {
   "Professional Hose-End Sprayer":
     "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80&auto=format&fit=crop",
   "Digital Soil Moisture Meter":
-    "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80&auto=format&fit=crop",
   "Heavy-Duty Nursery Cart":
-    "https://images.unsplash.com/photo-1617576683096-00fc8eecb3af?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80&auto=format&fit=crop",
 } as const;
 
 const products = [
