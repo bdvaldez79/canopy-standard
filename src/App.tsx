@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-const UNSPLASH_IMAGES = {
+const IMAGES = {
   "Professional Hose-End Sprayer":
-    "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&q=80&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1610891170442-79392fc76493?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   "Digital Soil Moisture Meter":
     "https://plus.unsplash.com/premium_photo-1661902899911-d7b89906e638?w=600&q=80&auto=format&fit=crop",
   "Heavy-Duty Nursery Cart":
@@ -34,7 +34,7 @@ function ProductCard({ product }: { product: (typeof products)[number] }) {
   const [imgLoaded, setImgLoaded] = useState(false);
   const [imgError, setImgError] = useState(false);
 
-  const imgUrl = UNSPLASH_IMAGES[product.name];
+  const imgUrl = IMAGES[product.name];
 
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden border border-green-100 flex flex-col">
@@ -89,7 +89,14 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#f3fbf4] p-8">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold text-green-900 mb-2">
+        <h1
+          className="text-5xl text-green-900 mb-2 font-light tracking-wide"
+          style={{
+            fontFamily:
+              '"Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif',
+            letterSpacing: "0.02em",
+          }}
+        >
           Canopy Standard 🌿
         </h1>
 
