@@ -1,457 +1,458 @@
-import React, { useState } from "react";
+import React, { useState } from “react”;
 
 const IMAGES = {
-  "Professional Hose-End Sprayer":
-    "https://images.unsplash.com/photo-1610891170442-79392fc76493?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "Digital Soil Moisture Meter":
-    "https://plus.unsplash.com/premium_photo-1661902899911-d7b89906e638?w=1200&q=80&auto=format&fit=crop",
-  "Heavy-Duty Nursery Cart":
-    "https://plus.unsplash.com/premium_photo-1663012834491-6ba79afac048?w=1200&q=80&auto=format&fit=crop",
+“Professional Hose-End Sprayer”:
+“https://images.unsplash.com/photo-1610891170442-79392fc76493?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D”,
+“Digital Soil Moisture Meter”:
+“https://plus.unsplash.com/premium_photo-1661902899911-d7b89906e638?w=1200&q=80&auto=format&fit=crop”,
+“Heavy-Duty Nursery Cart”:
+“https://plus.unsplash.com/premium_photo-1663012834491-6ba79afac048?w=1200&q=80&auto=format&fit=crop”,
 } as const;
 
 const products = [
-  {
-    name: "Professional Hose-End Sprayer",
-    category: "IRRIGATION",
-    description: "Reliable sprayer for plant feeding and pest control.",
-    price: "$34.99",
-    features: [
-      "Great for liquid fertilizer and treatment application",
-      "Simple hose attachment setup",
-      "Good coverage for garden beds and outdoor plants",
-    ],
-    buyUrl: "https://www.amazon.com/",
-  },
-  {
-    name: "Digital Soil Moisture Meter",
-    category: "MONITORING",
-    description: "Helps prevent overwatering and underwatering.",
-    price: "$49.99",
-    features: [
-      "Fast moisture readings at the root zone",
-      "Reduces watering guesswork",
-      "Useful for collectors and indoor plant care",
-    ],
-    buyUrl: "https://www.amazon.com/",
-  },
-  {
-    name: "Heavy-Duty Nursery Cart",
-    category: "WORKFLOW GEAR",
-    description: "Move plants and tools easily.",
-    price: "$89.99",
-    features: [
-      "Helps move pots, trays, and supplies",
-      "Good for patios, greenhouses, and garden work",
-      "Makes plant workflow easier and faster",
-    ],
-    buyUrl: "https://www.amazon.com/",
-  },
+{
+name: “Professional Hose-End Sprayer”,
+category: “IRRIGATION”,
+description: “Reliable sprayer for plant feeding and pest control.”,
+price: “$34.99”,
+features: [
+“Great for liquid fertilizer and treatment application”,
+“Simple hose attachment setup”,
+“Good coverage for garden beds and outdoor plants”,
+],
+buyUrl: “https://www.amazon.com/”,
+},
+{
+name: “Digital Soil Moisture Meter”,
+category: “MONITORING”,
+description: “Helps prevent overwatering and underwatering.”,
+price: “$49.99”,
+features: [
+“Fast moisture readings at the root zone”,
+“Reduces watering guesswork”,
+“Useful for collectors and indoor plant care”,
+],
+buyUrl: “https://www.amazon.com/”,
+},
+{
+name: “Heavy-Duty Nursery Cart”,
+category: “WORKFLOW GEAR”,
+description: “Move plants and tools easily.”,
+price: “$89.99”,
+features: [
+“Helps move pots, trays, and supplies”,
+“Good for patios, greenhouses, and garden work”,
+“Makes plant workflow easier and faster”,
+],
+buyUrl: “https://www.amazon.com/”,
+},
 ] as const;
 
+// ─── Inline CS Logo (No. 6 style) ─────────────────────────────────────────
+function CanopyLogo({ className = “” }: { className?: string }) {
+return (
+<div className={`flex flex-col items-start select-none ${className}`}>
+<div style={{ fontFamily: “‘Cormorant Garamond’, serif”, fontSize: “72px”, fontWeight: 300, lineHeight: 1, color: “#2a231c”, letterSpacing: “-0.01em”, position: “relative”, display: “inline-block” }}>
+CS
+{/* Decorative rule with diamond */}
+<div style={{ position: “absolute”, bottom: “-6px”, left: 0, right: 0, display: “flex”, alignItems: “center”, gap: 0 }}>
+<div style={{ flex: 1, height: “1px”, background: “#2a231c” }} />
+<div style={{ width: “6px”, height: “6px”, background: “#2a231c”, transform: “rotate(45deg)”, margin: “0 6px”, flexShrink: 0 }} />
+<div style={{ flex: 1, height: “1px”, background: “#2a231c” }} />
+</div>
+</div>
+<div style={{ marginTop: “14px” }}>
+<div style={{ fontFamily: “‘Josefin Sans’, sans-serif”, fontSize: “13px”, fontWeight: 600, letterSpacing: “0.28em”, textTransform: “uppercase”, color: “#2a231c” }}>
+Canopy Standard
+</div>
+<div style={{ fontFamily: “‘Josefin Sans’, sans-serif”, fontSize: “9px”, fontWeight: 300, letterSpacing: “0.22em”, textTransform: “uppercase”, color: “#8a9e7a”, marginTop: “3px” }}>
+Refined Essentials
+</div>
+</div>
+</div>
+);
+}
+
+// ─── Elegant Botanical Vine — Top Left ────────────────────────────────────
 function VineTopLeft() {
-  return (
-    <svg
-      viewBox="0 0 420 260"
-      className="pointer-events-none absolute left-0 top-0 w-[220px] opacity-70 md:w-[320px]"
-      aria-hidden="true"
-    >
-      <path
-        d="M10 8 C 40 28, 58 56, 62 95 C 70 150, 98 182, 150 214 C 180 232, 208 244, 246 252"
-        fill="none"
-        stroke="#6cab5a"
-        strokeWidth="4"
-        strokeLinecap="round"
-      />
-      <path
-        d="M90 2 C 120 18, 138 40, 144 72 C 150 110, 174 132, 208 152 C 238 170, 270 184, 318 196"
-        fill="none"
-        stroke="#8bcf7a"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-      {[
-        [36, 28, -25],
-        [54, 58, 16],
-        [64, 96, -30],
-        [78, 134, 22],
-        [110, 176, -18],
-        [144, 207, 14],
-        [178, 228, -10],
-        [126, 42, 24],
-        [148, 76, -24],
-        [184, 128, 20],
-        [226, 160, -15],
-        [268, 182, 18],
-      ].map(([x, y, r], i) => (
-        <ellipse
-          key={i}
-          cx={x}
-          cy={y}
-          rx="16"
-          ry="9"
-          fill={i % 2 === 0 ? "#7fc96d" : "#5fa94d"}
-          transform={`rotate(${r} ${x} ${y})`}
-        />
-      ))}
-    </svg>
-  );
+return (
+<svg
+viewBox=“0 0 340 300”
+className=“pointer-events-none absolute left-0 top-0 w-[200px] md:w-[280px]”
+aria-hidden=“true”
+style={{ opacity: 0.55 }}
+>
+{/* Main stem */}
+<path d="M-10 0 C 20 40, 30 90, 20 140 C 12 185, 30 230, 60 270" fill="none" stroke="#5a7a4a" strokeWidth="1.5" strokeLinecap="round"/>
+{/* Secondary stem */}
+<path d="M50 0 C 70 30, 75 70, 65 110 C 55 150, 70 190, 100 230" fill="none" stroke="#7aaa60" strokeWidth="1" strokeLinecap="round"/>
+
+```
+  {/* Leaf cluster 1 */}
+  <g transform="translate(18, 48) rotate(-30)">
+    <path d="M0,0 C-10,-18, -24,-22, -14,-8 C-6,2, 0,0 0,0Z" fill="#5d8c48" />
+    <path d="M0,0 C10,-16, 22,-18, 14,-6 C6,2, 0,0 0,0Z" fill="#7ab560" />
+    <line x1="0" y1="0" x2="-8" y2="-14" stroke="#4a7038" strokeWidth="0.5" />
+  </g>
+
+  {/* Leaf cluster 2 */}
+  <g transform="translate(22, 100) rotate(20)">
+    <path d="M0,0 C-12,-20, -28,-24, -16,-8 C-6,4, 0,0 0,0Z" fill="#6aaa52" />
+    <path d="M0,0 C8,-18, 20,-20, 12,-7 C4,3, 0,0 0,0Z" fill="#4e8040" />
+    <line x1="0" y1="0" x2="-10" y2="-16" stroke="#3d6630" strokeWidth="0.5" />
+  </g>
+
+  {/* Leaf cluster 3 */}
+  <g transform="translate(14, 155) rotate(-20)">
+    <path d="M0,0 C-14,-22, -30,-26, -18,-9 C-7,5, 0,0 0,0Z" fill="#5d8c48" />
+    <path d="M0,0 C10,-20, 26,-22, 16,-8 C6,4, 0,0 0,0Z" fill="#86c46c" />
+  </g>
+
+  {/* Leaf cluster 4 */}
+  <g transform="translate(62, 80) rotate(10)">
+    <path d="M0,0 C-10,-16, -22,-18, -13,-6 C-5,3, 0,0 0,0Z" fill="#7ab560" />
+    <path d="M0,0 C8,-14, 18,-16, 11,-5 C4,3, 0,0 0,0Z" fill="#5d8c48" />
+  </g>
+
+  {/* Leaf cluster 5 */}
+  <g transform="translate(68, 140) rotate(-15)">
+    <path d="M0,0 C-12,-20, -26,-22, -15,-7 C-5,4, 0,0 0,0Z" fill="#6aaa52" />
+    <path d="M0,0 C10,-18, 22,-20, 13,-7 C4,3, 0,0 0,0Z" fill="#4e8040" />
+  </g>
+
+  {/* Small tendrils */}
+  <path d="M20,70 C 28,62, 36,66, 32,74" fill="none" stroke="#7aaa60" strokeWidth="0.8" strokeLinecap="round"/>
+  <path d="M16,130 C 8,122, 4,126, 8,134" fill="none" stroke="#5a7a4a" strokeWidth="0.8" strokeLinecap="round"/>
+</svg>
+```
+
+);
 }
 
+// ─── Elegant Botanical Vine — Top Right ───────────────────────────────────
 function VineTopRight() {
-  return (
-    <svg
-      viewBox="0 0 420 260"
-      className="pointer-events-none absolute right-0 top-0 w-[220px] opacity-70 md:w-[320px]"
-      aria-hidden="true"
-    >
-      <path
-        d="M410 8 C 380 28, 362 56, 358 95 C 350 150, 322 182, 270 214 C 240 232, 212 244, 174 252"
-        fill="none"
-        stroke="#6cab5a"
-        strokeWidth="4"
-        strokeLinecap="round"
-      />
-      <path
-        d="M330 2 C 300 18, 282 40, 276 72 C 270 110, 246 132, 212 152 C 182 170, 150 184, 102 196"
-        fill="none"
-        stroke="#8bcf7a"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-      {[
-        [384, 28, 25],
-        [366, 58, -16],
-        [356, 96, 30],
-        [342, 134, -22],
-        [310, 176, 18],
-        [276, 207, -14],
-        [242, 228, 10],
-        [294, 42, -24],
-        [272, 76, 24],
-        [236, 128, -20],
-        [194, 160, 15],
-        [152, 182, -18],
-      ].map(([x, y, r], i) => (
-        <ellipse
-          key={i}
-          cx={x}
-          cy={y}
-          rx="16"
-          ry="9"
-          fill={i % 2 === 0 ? "#7fc96d" : "#5fa94d"}
-          transform={`rotate(${r} ${x} ${y})`}
-        />
-      ))}
-    </svg>
-  );
+return (
+<svg
+viewBox=“0 0 340 300”
+className=“pointer-events-none absolute right-0 top-0 w-[200px] md:w-[280px]”
+aria-hidden=“true”
+style={{ opacity: 0.55 }}
+>
+{/* Main stem (mirrored) */}
+<path d="M350 0 C 320 40, 310 90, 320 140 C 328 185, 310 230, 280 270" fill="none" stroke="#5a7a4a" strokeWidth="1.5" strokeLinecap="round"/>
+<path d="M290 0 C 270 30, 265 70, 275 110 C 285 150, 270 190, 240 230" fill="none" stroke="#7aaa60" strokeWidth="1" strokeLinecap="round"/>
+
+```
+  <g transform="translate(322, 48) rotate(30)">
+    <path d="M0,0 C10,-18, 24,-22, 14,-8 C6,2, 0,0 0,0Z" fill="#5d8c48" />
+    <path d="M0,0 C-10,-16, -22,-18, -14,-6 C-6,2, 0,0 0,0Z" fill="#7ab560" />
+  </g>
+
+  <g transform="translate(318, 100) rotate(-20)">
+    <path d="M0,0 C12,-20, 28,-24, 16,-8 C6,4, 0,0 0,0Z" fill="#6aaa52" />
+    <path d="M0,0 C-8,-18, -20,-20, -12,-7 C-4,3, 0,0 0,0Z" fill="#4e8040" />
+  </g>
+
+  <g transform="translate(326, 155) rotate(20)">
+    <path d="M0,0 C14,-22, 30,-26, 18,-9 C7,5, 0,0 0,0Z" fill="#5d8c48" />
+    <path d="M0,0 C-10,-20, -26,-22, -16,-8 C-6,4, 0,0 0,0Z" fill="#86c46c" />
+  </g>
+
+  <g transform="translate(278, 80) rotate(-10)">
+    <path d="M0,0 C10,-16, 22,-18, 13,-6 C5,3, 0,0 0,0Z" fill="#7ab560" />
+    <path d="M0,0 C-8,-14, -18,-16, -11,-5 C-4,3, 0,0 0,0Z" fill="#5d8c48" />
+  </g>
+
+  <g transform="translate(272, 140) rotate(15)">
+    <path d="M0,0 C12,-20, 26,-22, 15,-7 C5,4, 0,0 0,0Z" fill="#6aaa52" />
+    <path d="M0,0 C-10,-18, -22,-20, -13,-7 C-4,3, 0,0 0,0Z" fill="#4e8040" />
+  </g>
+
+  <path d="M320,70 C 312,62, 304,66, 308,74" fill="none" stroke="#7aaa60" strokeWidth="0.8" strokeLinecap="round"/>
+  <path d="M324,130 C 332,122, 336,126, 332,134" fill="none" stroke="#5a7a4a" strokeWidth="0.8" strokeLinecap="round"/>
+</svg>
+```
+
+);
 }
 
-function VineBottomLeft() {
-  return (
-    <svg
-      viewBox="0 0 360 220"
-      className="pointer-events-none absolute bottom-0 left-0 w-[180px] opacity-60 md:w-[240px]"
-      aria-hidden="true"
-    >
-      <path
-        d="M0 210 C 42 186, 66 165, 98 128 C 132 90, 170 68, 230 52"
-        fill="none"
-        stroke="#72b860"
-        strokeWidth="4"
-        strokeLinecap="round"
-      />
-      {[
-        [42, 180, -20],
-        [74, 156, 18],
-        [106, 126, -24],
-        [140, 96, 22],
-        [178, 76, -15],
-        [216, 58, 16],
-      ].map(([x, y, r], i) => (
-        <ellipse
-          key={i}
-          cx={x}
-          cy={y}
-          rx="15"
-          ry="8"
-          fill={i % 2 === 0 ? "#86cd74" : "#5fa94d"}
-          transform={`rotate(${r} ${x} ${y})`}
-        />
-      ))}
-    </svg>
-  );
-}
-
-function VineBottomRight() {
-  return (
-    <svg
-      viewBox="0 0 360 220"
-      className="pointer-events-none absolute bottom-0 right-0 w-[180px] opacity-60 md:w-[240px]"
-      aria-hidden="true"
-    >
-      <path
-        d="M360 210 C 318 186, 294 165, 262 128 C 228 90, 190 68, 130 52"
-        fill="none"
-        stroke="#72b860"
-        strokeWidth="4"
-        strokeLinecap="round"
-      />
-      {[
-        [318, 180, 20],
-        [286, 156, -18],
-        [254, 126, 24],
-        [220, 96, -22],
-        [182, 76, 15],
-        [144, 58, -16],
-      ].map(([x, y, r], i) => (
-        <ellipse
-          key={i}
-          cx={x}
-          cy={y}
-          rx="15"
-          ry="8"
-          fill={i % 2 === 0 ? "#86cd74" : "#5fa94d"}
-          transform={`rotate(${r} ${x} ${y})`}
-        />
-      ))}
-    </svg>
-  );
-}
-
+// ─── Product Card ──────────────────────────────────────────────────────────
 function ProductCard({
-  product,
-  onView,
+product,
+onView,
 }: {
-  product: (typeof products)[number];
-  onView: () => void;
+product: (typeof products)[number];
+onView: () => void;
 }) {
-  const [imgLoaded, setImgLoaded] = useState(false);
-  const [imgError, setImgError] = useState(false);
-  const imgUrl = IMAGES[product.name];
+const [imgLoaded, setImgLoaded] = useState(false);
+const [imgError, setImgError] = useState(false);
+const imgUrl = IMAGES[product.name];
 
-  return (
-    <div className="flex flex-col overflow-hidden rounded-2xl border border-green-100 bg-white/90 shadow-md backdrop-blur-sm">
-      <div className="relative h-48 w-full bg-green-50">
+return (
+<div
+className=“flex flex-col overflow-hidden bg-white border border-stone-100 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1”
+style={{ borderRadius: “2px” }}
+>
+<div className="relative h-52 w-full bg-stone-50 overflow-hidden">
+{!imgLoaded && !imgError && (
+<div className="absolute inset-0 flex items-center justify-center">
+<div className="h-6 w-6 animate-spin rounded-full border-2 border-stone-200 border-t-stone-500" />
+</div>
+)}
+{imgError ? (
+<div className="absolute inset-0 flex items-center justify-center text-xs text-stone-400 tracking-widest uppercase">
+Unavailable
+</div>
+) : (
+<img
+src={imgUrl}
+alt={product.name}
+className={`h-full w-full object-cover transition-all duration-700 hover:scale-105 ${imgLoaded ? "opacity-100" : "opacity-0"}`}
+onLoad={() => setImgLoaded(true)}
+onError={() => setImgError(true)}
+/>
+)}
+</div>
+
+```
+  <div className="flex flex-1 flex-col p-6">
+    <p style={{ fontFamily: "'Josefin Sans', sans-serif", fontSize: "9px", fontWeight: 600, letterSpacing: "0.25em", textTransform: "uppercase", color: "#8a9e7a", marginBottom: "8px" }}>
+      {product.category}
+    </p>
+    <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "22px", fontWeight: 400, color: "#2a231c", lineHeight: 1.2, marginBottom: "10px" }}>
+      {product.name}
+    </h2>
+    <p className="flex-1 text-sm text-stone-500 leading-relaxed" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 300 }}>
+      {product.description}
+    </p>
+
+    <div className="mt-5 flex items-center justify-between">
+      <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "26px", fontWeight: 600, color: "#2a231c" }}>
+        {product.price}
+      </span>
+      <button
+        onClick={onView}
+        className="transition-colors duration-200"
+        style={{ fontFamily: "'Josefin Sans', sans-serif", fontSize: "10px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#fff", background: "#3d5c30", padding: "10px 20px", border: "none", cursor: "pointer" }}
+        onMouseEnter={e => (e.currentTarget.style.background = "#2a3f20")}
+        onMouseLeave={e => (e.currentTarget.style.background = "#3d5c30")}
+      >
+        View
+      </button>
+    </div>
+  </div>
+</div>
+```
+
+);
+}
+
+// ─── Product Detail ────────────────────────────────────────────────────────
+function ProductDetail({
+product,
+onBack,
+}: {
+product: (typeof products)[number];
+onBack: () => void;
+}) {
+const [imgLoaded, setImgLoaded] = useState(false);
+const [imgError, setImgError] = useState(false);
+const imgUrl = IMAGES[product.name];
+
+return (
+<div className=“bg-white border border-stone-100 shadow-sm p-8 md:p-12” style={{ borderRadius: “2px” }}>
+<button
+onClick={onBack}
+className=“mb-10 flex items-center gap-2 transition-colors”
+style={{ fontFamily: “‘Josefin Sans’, sans-serif”, fontSize: “10px”, fontWeight: 600, letterSpacing: “0.2em”, textTransform: “uppercase”, color: “#5a7a4a”, background: “none”, border: “none”, cursor: “pointer” }}
+>
+← Back to products
+</button>
+
+```
+  <div className="grid gap-12 md:grid-cols-2">
+    <div className="overflow-hidden bg-stone-50" style={{ borderRadius: "2px" }}>
+      <div className="relative h-[300px] md:h-[440px]">
         {!imgLoaded && !imgError && (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-green-200 border-t-green-600" />
+            <div className="h-8 w-8 animate-spin rounded-full border-2 border-stone-200 border-t-stone-500" />
           </div>
         )}
-
         {imgError ? (
-          <div className="absolute inset-0 flex items-center justify-center text-sm text-gray-500">
-            Image unavailable
+          <div className="absolute inset-0 flex items-center justify-center text-xs text-stone-400 tracking-widest uppercase">
+            Unavailable
           </div>
         ) : (
           <img
             src={imgUrl}
             alt={product.name}
-            className={`h-48 w-full object-cover transition-opacity duration-500 ${
-              imgLoaded ? "opacity-100" : "opacity-0"
-            }`}
+            className={`h-full w-full object-cover transition-opacity duration-700 ${imgLoaded ? "opacity-100" : "opacity-0"}`}
             onLoad={() => setImgLoaded(true)}
             onError={() => setImgError(true)}
           />
         )}
       </div>
+    </div>
 
-      <div className="flex flex-1 flex-col p-5">
-        <h2 className="text-lg font-semibold text-green-900">{product.name}</h2>
-        <p className="mt-1 text-xs uppercase tracking-[0.18em] text-gray-400">
-          {product.category}
+    <div className="flex flex-col justify-center">
+      <p style={{ fontFamily: "'Josefin Sans', sans-serif", fontSize: "9px", fontWeight: 600, letterSpacing: "0.28em", textTransform: "uppercase", color: "#8a9e7a", marginBottom: "12px" }}>
+        {product.category}
+      </p>
+
+      <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "38px", fontWeight: 400, color: "#2a231c", lineHeight: 1.1, marginBottom: "16px" }}>
+        {product.name}
+      </h2>
+
+      {/* Decorative rule */}
+      <div style={{ display: "flex", alignItems: "center", gap: 0, marginBottom: "20px" }}>
+        <div style={{ width: "40px", height: "1px", background: "#c8b89a" }} />
+        <div style={{ width: "4px", height: "4px", background: "#c8b89a", transform: "rotate(45deg)", margin: "0 6px" }} />
+        <div style={{ flex: 1, height: "1px", background: "#e8e0d4" }} />
+      </div>
+
+      <p className="text-sm leading-7 text-stone-500 mb-8" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 300 }}>
+        {product.description}
+      </p>
+
+      <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "36px", fontWeight: 600, color: "#2a231c", marginBottom: "24px" }}>
+        {product.price}
+      </p>
+
+      <div className="mb-8">
+        <p style={{ fontFamily: "'Josefin Sans', sans-serif", fontSize: "9px", fontWeight: 600, letterSpacing: "0.25em", textTransform: "uppercase", color: "#8a9e7a", marginBottom: "14px" }}>
+          Features
         </p>
-        <p className="mt-3 flex-1 text-sm text-gray-600">{product.description}</p>
-        <p className="mt-4 text-2xl font-bold text-gray-900">{product.price}</p>
+        <ul className="space-y-3">
+          {product.features.map((feature) => (
+            <li key={feature} className="flex items-start gap-3 text-sm text-stone-600" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 300 }}>
+              <span style={{ display: "inline-block", width: "4px", height: "4px", background: "#5a7a4a", transform: "rotate(45deg)", marginTop: "7px", flexShrink: 0 }} />
+              {feature}
+            </li>
+          ))}
+        </ul>
+      </div>
 
-        <button
-          onClick={onView}
-          className="mt-5 w-full rounded-xl bg-green-600 py-2.5 font-medium text-white transition hover:bg-green-700"
+      <div className="flex gap-4">
+        <a
+          href={product.buyUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ fontFamily: "'Josefin Sans', sans-serif", fontSize: "10px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#fff", background: "#3d5c30", padding: "14px 28px", textDecoration: "none", display: "inline-block", transition: "background 0.2s" }}
+          onMouseEnter={e => (e.currentTarget.style.background = "#2a3f20")}
+          onMouseLeave={e => (e.currentTarget.style.background = "#3d5c30")}
         >
-          View Product
+          Buy Now
+        </a>
+        <button
+          onClick={onBack}
+          style={{ fontFamily: "'Josefin Sans', sans-serif", fontSize: "10px", fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#3d5c30", background: "none", border: "1px solid #c8d8b8", padding: "14px 28px", cursor: "pointer", transition: "background 0.2s" }}
+          onMouseEnter={e => (e.currentTarget.style.background = "#f4f8f0")}
+          onMouseLeave={e => (e.currentTarget.style.background = "none")}
+        >
+          Back
         </button>
       </div>
     </div>
-  );
+  </div>
+</div>
+```
+
+);
 }
 
-function ProductDetail({
-  product,
-  onBack,
-}: {
-  product: (typeof products)[number];
-  onBack: () => void;
-}) {
-  const [imgLoaded, setImgLoaded] = useState(false);
-  const [imgError, setImgError] = useState(false);
-  const imgUrl = IMAGES[product.name];
-
-  return (
-    <div className="rounded-3xl border border-green-100 bg-white/90 p-5 shadow-lg backdrop-blur-sm md:p-8">
-      <button
-        onClick={onBack}
-        className="mb-6 rounded-full border border-green-200 px-4 py-2 text-sm font-medium text-green-800 transition hover:bg-green-50"
-      >
-        ← Back to products
-      </button>
-
-      <div className="grid gap-8 md:grid-cols-2">
-        <div className="overflow-hidden rounded-2xl border border-green-100 bg-green-50">
-          <div className="relative h-[260px] md:h-[420px]">
-            {!imgLoaded && !imgError && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="h-10 w-10 animate-spin rounded-full border-4 border-green-200 border-t-green-600" />
-              </div>
-            )}
-
-            {imgError ? (
-              <div className="absolute inset-0 flex items-center justify-center text-sm text-gray-500">
-                Image unavailable
-              </div>
-            ) : (
-              <img
-                src={imgUrl}
-                alt={product.name}
-                className={`h-full w-full object-cover transition-opacity duration-500 ${
-                  imgLoaded ? "opacity-100" : "opacity-0"
-                }`}
-                onLoad={() => setImgLoaded(true)}
-                onError={() => setImgError(true)}
-              />
-            )}
-          </div>
-        </div>
-
-        <div>
-          <p className="mb-2 text-xs uppercase tracking-[0.25em] text-gray-400">
-            {product.category}
-          </p>
-
-          <h2 className="text-3xl font-semibold text-green-900 md:text-4xl">
-            {product.name}
-          </h2>
-
-          <p className="mt-4 text-base leading-7 text-gray-600">
-            {product.description}
-          </p>
-
-          <p className="mt-6 text-3xl font-bold text-gray-900">
-            {product.price}
-          </p>
-
-          <div className="mt-6">
-            <h3 className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-gray-500">
-              Features
-            </h3>
-            <ul className="space-y-3 text-sm text-gray-700">
-              {product.features.map((feature) => (
-                <li key={feature} className="flex items-start gap-3">
-                  <span className="mt-1 h-2 w-2 rounded-full bg-green-600" />
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a
-              href={product.buyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-xl bg-green-600 px-6 py-3 font-medium text-white transition hover:bg-green-700"
-            >
-              Buy Now
-            </a>
-
-            <button
-              onClick={onBack}
-              className="rounded-xl border border-green-200 px-6 py-3 font-medium text-green-900 transition hover:bg-green-50"
-            >
-              Back
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
+// ─── App ───────────────────────────────────────────────────────────────────
 export default function App() {
-  const [selectedProduct, setSelectedProduct] =
-    useState<(typeof products)[number] | null>(null);
+const [selectedProduct, setSelectedProduct] =
+useState<(typeof products)[number] | null>(null);
 
-  return (
-    <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+return (
+<>
+<style>{`@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;600&display=swap'); * { box-sizing: border-box; } body { margin: 0; background: #f7f4ef; }`}</style>
 
-        .playfair-title {
-          font-family: 'Playfair Display', serif;
-        }
-      `}</style>
+```
+  <div className="relative min-h-screen overflow-x-hidden" style={{ background: "linear-gradient(160deg, #f2ede5 0%, #f7f4ef 50%, #eef3ec 100%)" }}>
 
-      <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-[#eaf6ea] via-[#f3fbf4] to-[#ffffff]">
-        <VineTopLeft />
-        <VineTopRight />
-        <VineBottomLeft />
-        <VineBottomRight />
+    <VineTopLeft />
+    <VineTopRight />
 
-        <div className="relative mx-auto max-w-6xl px-6 py-10 md:px-8 md:py-12">
-          <header className="mb-10 flex items-start justify-between gap-4">
-            <div>
-              <img
-                src="/cs-logo.png"
-                alt="Canopy Standard logo"
-                className="mb-4 w-[220px] md:w-[300px]"
-              />
+    {/* Subtle grain texture overlay */}
+    <div className="pointer-events-none fixed inset-0" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E\")", opacity: 0.4 }} />
 
-              <p className="text-gray-600 text-sm md:text-base">
-                Smart tools for plant care & pest control systems
-              </p>
+    <div className="relative mx-auto max-w-5xl px-6 py-12 md:px-10 md:py-16">
 
-              <p className="mt-2 text-xs text-gray-400">
-                Photos via{" "}
-                <a
-                  href="https://unsplash.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline hover:text-green-600"
-                >
-                  Unsplash
-                </a>
-              </p>
-            </div>
+      {/* Header */}
+      <header className="mb-14 flex items-start justify-between gap-6">
+        <CanopyLogo />
 
-            <nav className="hidden gap-6 pt-2 text-sm text-green-900 md:flex">
-              <a href="#" className="hover:text-green-600">
-                Shop
-              </a>
-              <a href="#" className="hover:text-green-600">
-                Collections
-              </a>
-              <a href="#" className="hover:text-green-600">
-                About
-              </a>
-            </nav>
-          </header>
+        <nav className="hidden md:flex gap-8 pt-2">
+          {["Shop", "Collections", "About"].map((item) => (
+            <a
+              key={item}
+              href="#"
+              style={{ fontFamily: "'Josefin Sans', sans-serif", fontSize: "10px", fontWeight: 600, letterSpacing: "0.22em", textTransform: "uppercase", color: "#4a3d30", textDecoration: "none" }}
+              onMouseEnter={e => (e.currentTarget.style.color = "#3d5c30")}
+              onMouseLeave={e => (e.currentTarget.style.color = "#4a3d30")}
+            >
+              {item}
+            </a>
+          ))}
+        </nav>
+      </header>
 
-          {!selectedProduct ? (
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              {products.map((product) => (
-                <ProductCard
-                  key={product.name}
-                  product={product}
-                  onView={() => setSelectedProduct(product)}
-                />
-              ))}
-            </div>
-          ) : (
-            <ProductDetail
-              product={selectedProduct}
-              onBack={() => setSelectedProduct(null)}
-            />
-          )}
+      {/* Section heading */}
+      {!selectedProduct && (
+        <div className="mb-10">
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "13px", fontWeight: 300, letterSpacing: "0.15em", color: "#8a9e7a", textTransform: "uppercase", marginBottom: "6px" }}>
+            Our Collection
+          </p>
+          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "32px", fontWeight: 400, color: "#2a231c", lineHeight: 1.2 }}>
+            Smart tools for plant care<br />& pest control systems
+          </h1>
+          <div style={{ display: "flex", alignItems: "center", gap: 0, marginTop: "16px" }}>
+            <div style={{ width: "48px", height: "1px", background: "#c8b89a" }} />
+            <div style={{ width: "4px", height: "4px", background: "#c8b89a", transform: "rotate(45deg)", margin: "0 6px" }} />
+          </div>
+          <p style={{ fontFamily: "'Josefin Sans', sans-serif", fontSize: "10px", fontWeight: 300, letterSpacing: "0.1em", color: "#aaa", marginTop: "10px" }}>
+            Photos via{" "}
+            <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: "#8a9e7a", textDecoration: "none" }}>
+              Unsplash
+            </a>
+          </p>
         </div>
-      </div>
-    </>
-  );
+      )}
+
+      {/* Content */}
+      {!selectedProduct ? (
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {products.map((product) => (
+            <ProductCard
+              key={product.name}
+              product={product}
+              onView={() => setSelectedProduct(product)}
+            />
+          ))}
+        </div>
+      ) : (
+        <ProductDetail
+          product={selectedProduct}
+          onBack={() => setSelectedProduct(null)}
+        />
+      )}
+
+      {/* Footer */}
+      <footer className="mt-20 flex items-center justify-between border-t border-stone-200 pt-8">
+        <p style={{ fontFamily: "'Josefin Sans', sans-serif", fontSize: "9px", fontWeight: 300, letterSpacing: "0.2em", textTransform: "uppercase", color: "#bbb" }}>
+          © 2024 Canopy Standard
+        </p>
+        <p style={{ fontFamily: "'Josefin Sans', sans-serif", fontSize: "9px", fontWeight: 300, letterSpacing: "0.2em", textTransform: "uppercase", color: "#bbb" }}>
+          Refined Essentials
+        </p>
+      </footer>
+
+    </div>
+  </div>
+</>
+```
+
+);
 }
