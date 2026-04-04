@@ -11,7 +11,7 @@ export function Button({
 }) {
   return (
     <button
-      className={`w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg ${className}`}
+      className={`w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg transition ${className}`}
       {...props}
     >
       {children}
@@ -30,7 +30,7 @@ export function Card({
 }) {
   return (
     <div
-      className={`bg-white rounded-xl shadow-md overflow-hidden ${className}`}
+      className={`bg-white rounded-xl shadow-md overflow-hidden border border-green-100 ${className}`}
       {...props}
     >
       {children}
@@ -47,9 +47,9 @@ export function CardContent({
   children: React.ReactNode;
   [key: string]: any;
 }) {
-  return (
-    <div className={`p-4 ${className}`} {...props}>
-      {children}
-    </div>
-  );
+    return (
+      <div className={`p-4 ${className}`} {...props}>
+        {children}
+      </div>
+    );
 }
